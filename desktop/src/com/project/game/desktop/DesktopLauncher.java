@@ -7,6 +7,11 @@ import com.project.game.TheProjectGame;
 public class DesktopLauncher {
 	public static void main (String[] arg) {
 		LwjglApplicationConfiguration config = new LwjglApplicationConfiguration();
+		
+		config.width = TheProjectGame.GAME_WIDTH;
+		config.height = TheProjectGame.GAME_HEIGHT;
+		config.title = "The Project Game";
+		
 		new LwjglApplication(new TheProjectGame(), config);
 	}
 }
