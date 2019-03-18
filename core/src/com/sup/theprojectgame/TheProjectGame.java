@@ -3,6 +3,7 @@ package com.sup.theprojectgame;
 import com.badlogic.gdx.Game;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
+import com.sup.theprojectgame.screens.PlayScreen;
 
 public class TheProjectGame extends Game {
 	//FINALS
@@ -15,6 +16,7 @@ public class TheProjectGame extends Game {
 	@Override
 	public void create () {
 		batch = new SpriteBatch();
+		setScreen(new PlayScreen(this));
 	}
 
 	@Override
@@ -25,6 +27,5 @@ public class TheProjectGame extends Game {
 	@Override
 	public void dispose () {
 		batch.dispose();
-		img.dispose();
 	}
 }
