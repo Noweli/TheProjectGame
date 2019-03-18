@@ -11,7 +11,6 @@ public class TheProjectGame extends Game {
 	public static final int GAME_HEIGHT = 480;
 	
 	public SpriteBatch batch;
-	Texture img;
 	
 	@Override
 	public void create () {
