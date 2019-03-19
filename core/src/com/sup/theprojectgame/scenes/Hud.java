@@ -1,3 +1,8 @@
+//Game main HUD
+//Should contain information about HP, Shield, Ammo and reserve ammo
+//Also below should be level name
+
+
 package com.sup.theprojectgame.scenes;
 
 import com.badlogic.gdx.graphics.OrthographicCamera;
@@ -13,7 +18,6 @@ public class Hud {
     public Stage stage;
     private Viewport viewport;
 
-    //TO BE MODIFIED LATER
     public Hud(SpriteBatch sb) {
         viewport = new FitViewport(TheProjectGame.GAME_WIDTH, TheProjectGame.GAME_WIDTH, new OrthographicCamera());
         stage = new Stage(viewport, sb);

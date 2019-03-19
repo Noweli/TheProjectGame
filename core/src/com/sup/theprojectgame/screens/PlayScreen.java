@@ -1,44 +1,31 @@
+//Main play state class
+//Contains and handles all stuff during gameplay
+
+
 package com.sup.theprojectgame.screens;
 
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Screen;
 import com.badlogic.gdx.graphics.GL20;
-import com.badlogic.gdx.graphics.OrthographicCamera;
-import com.badlogic.gdx.graphics.Texture;
-import com.badlogic.gdx.maps.tiled.TiledMap;
-import com.badlogic.gdx.maps.tiled.TmxMapLoader;
-import com.badlogic.gdx.maps.tiled.renderers.OrthogonalTiledMapRenderer;
-import com.badlogic.gdx.utils.viewport.FitViewport;
-import com.badlogic.gdx.utils.viewport.Viewport;
 import com.sup.theprojectgame.TheProjectGame;
+import com.sup.theprojectgame.cameras.GameCamera;
+import com.sup.theprojectgame.map.MapController;
 import com.sup.theprojectgame.scenes.Hud;
 
 public class PlayScreen implements Screen {
 	private TheProjectGame game;
-	private OrthographicCamera camera;
-	private Viewport viewPort;
-
-	private TmxMapLoader mapLoader;
-	private TiledMap map;
-	private OrthogonalTiledMapRenderer renderer;
-
+	
+	private GameCamera camera;
+	private MapController map;
 	private Hud hud;
+	
 
 	public PlayScreen(TheProjectGame game) {
 		this.game = game;
-		//create cam used to follow character through cam world
-		camera = new OrthographicCamera();
-
-		viewPort = new FitViewport(TheProjectGame.GAME_WIDTH, TheProjectGame.GAME_HEIGHT, camera);
-
+		
+		camera = new GameCamera();
 		hud = new Hud(game.batch);
-
-		//loading map to the screen
-		mapLoader = new TmxMapLoader();
-		map = mapLoader.load("test.tmx");
-		renderer = new OrthogonalTiledMapRenderer(map);
-
-		camera.position.set(viewPort.getWorldWidth() / 2, viewPort.getWorldHeight() / 2, 0);
+		map = new MapController("level1.tmx");
 	}
 
 	@Override
@@ -48,14 +35,14 @@ public class PlayScreen implements Screen {
 
 	public void handleInput(float dt) {
 		if(Gdx.input.isTouched())
-			camera.position.x += 100 * dt;
+			camera.getCamera().position.x += 100 * dt;
 	}
 
 	public void update(float dt) {
 		handleInput(dt);
 
-		camera.update();
-		renderer.setView(camera);
+		camera.cameraUpdate();
+		map.setRnderView(camera.getCamera());
 	}
 
 	@Override
@@ -65,7 +52,7 @@ public class PlayScreen implements Screen {
 		Gdx.gl.glClearColor(0, 0, 0, 1);
 		Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT);
 
-		renderer.render();
+		map.renderMap();
 
 		game.batch.setProjectionMatrix(hud.stage.getCamera().combined);
 		hud.stage.draw();
@@ -73,7 +60,7 @@ public class PlayScreen implements Screen {
 
 	@Override
 	public void resize(int width, int height) {
-		viewPort.update(width, height);
+		camera.viewPortUpdate(width, height);
 	}
 
 	@Override

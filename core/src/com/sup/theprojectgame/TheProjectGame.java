@@ -1,7 +1,6 @@
 package com.sup.theprojectgame;
 
 import com.badlogic.gdx.Game;
-import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.sup.theprojectgame.screens.PlayScreen;
 
