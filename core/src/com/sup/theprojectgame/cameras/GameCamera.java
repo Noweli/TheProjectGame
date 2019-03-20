@@ -44,5 +44,6 @@ public class GameCamera {
 	public void setViewPort(Viewport viewPort) {
 		this.viewPort = viewPort;
 	}
+	
 
 }
