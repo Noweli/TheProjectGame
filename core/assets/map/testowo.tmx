@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.2" tiledversion="1.2.2" orientation="orthogonal" renderorder="right-down" width="176" height="32" tilewidth="16" tileheight="16" infinite="0" nextlayerid="7" nextobjectid="132">
+<map version="1.2" tiledversion="1.2.3" orientation="orthogonal" renderorder="right-down" width="176" height="32" tilewidth="16" tileheight="16" infinite="0" nextlayerid="7" nextobjectid="132">
  <tileset firstgid="1" source="dirt-tiles16x16.tsx"/>
  <tileset firstgid="385" source="castle_tileset_part1.tsx"/>
  <layer id="4" name="Warstwa Kafelków 1" width="176" height="32">

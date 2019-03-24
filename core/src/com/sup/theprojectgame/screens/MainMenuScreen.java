@@ -5,7 +5,6 @@ import com.badlogic.gdx.Screen;
 import com.badlogic.gdx.graphics.GL20;
 import com.badlogic.gdx.graphics.Texture;
 import com.sup.theprojectgame.TheProjectGame;
-import com.sup.theprojectgame.cameras.GameCamera;
 
 public class MainMenuScreen implements Screen{
 	
