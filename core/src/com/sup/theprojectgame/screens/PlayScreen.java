@@ -1,7 +1,6 @@
 //Main play state class
 //Contains and handles all stuff during gameplay
 
-
 package com.sup.theprojectgame.screens;
 
 import com.badlogic.gdx.Gdx;
@@ -19,29 +18,28 @@ import com.sup.theprojectgame.sprites.Player;
 
 public class PlayScreen implements Screen {
 	private TheProjectGame game;
-	
+
 	private GameCamera camera;
 	private MapController map;
 	private Hud hud;
-	
+
 	private World world;
 	private Box2DDebugRenderer b2dr;
 	private Player player;
-	
 
 	public PlayScreen(TheProjectGame game) {
 		this.game = game;
-		
+
 		camera = new GameCamera();
 		hud = new Hud(game.batch);
 		map = new MapController("map/testowo.tmx");
-		
+
 		world = new World(new Vector2(0, -10), true);
 		b2dr = new Box2DDebugRenderer();
 		player = new Player(world);
-		
+
 		new WorldCreator(world, map.getMap());
-		
+
 	}
 
 	@Override
@@ -55,9 +53,8 @@ public class PlayScreen implements Screen {
 
 	public void update(float dt) {
 		handleInput(dt);
-		
-		world.step(1 / 60f, 6, 2);
 
+		world.step(1 / 60f, 6, 2);
 		camera.cameraUpdate(player.b2body.getPosition().x, player.b2body.getPosition().y);
 		map.setRenderView(camera.getCamera());
 	}
@@ -70,7 +67,7 @@ public class PlayScreen implements Screen {
 		Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT);
 
 		map.renderMap();
-		
+
 		b2dr.render(world, camera.getCamera().combined);
 
 		game.batch.setProjectionMatrix(hud.stage.getCamera().combined);

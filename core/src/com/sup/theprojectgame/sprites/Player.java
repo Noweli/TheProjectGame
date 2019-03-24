@@ -13,7 +13,7 @@ import com.sup.theprojectgame.TheProjectGame;
 
 public class Player extends Sprite {
 	private float speedScale = 1.6f;
-	
+
 	public World world;
 	public Body b2body;
 
@@ -24,7 +24,7 @@ public class Player extends Sprite {
 
 	public void definePlayer() {
 		BodyDef bdef = new BodyDef();
-		bdef.position.set(208 / TheProjectGame.PIXELSCALE, 272 / TheProjectGame.PIXELSCALE);
+		bdef.position.set(336 / TheProjectGame.PIXELSCALE, 214.34f / TheProjectGame.PIXELSCALE);
 		bdef.type = BodyDef.BodyType.DynamicBody;
 
 		b2body = world.createBody(bdef);

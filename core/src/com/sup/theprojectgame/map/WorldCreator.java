@@ -9,7 +9,7 @@ import com.badlogic.gdx.physics.box2d.World;
 import com.sup.theprojectgame.sprites.Ground;
 
 public class WorldCreator {
-	
+
 	public WorldCreator(World world, TiledMap map) {
 
 		// Box2D for ground object
