@@ -4,10 +4,10 @@
  <tileset firstgid="385" source="castle_tileset_part1.tsx"/>
  <layer id="8" name="Warstwa Kafelków 1" width="176" height="32">
   <data encoding="base64" compression="zlib">
-   eJztmD1PGzEYxx8hITJ0BbohdQkSoXTuwkD6skRk6QY0X6GFvox8AaBDP0CmVv0OHbqlK2RFgjVlC4iZx3BuzdW+s3POnc39h58uOZ199uOffY+9TkTrljxhfgTCGNSGr2TvKPwFoQF/QczAXxAz8BfEDPydLleOVN3e2IC/YblcdRtDZ55ZYBaZxwR/Q/F3TPDXhlXmKbPGPCP4G4K7WH/tecG8ZF4xrwn++uDY4hkf/tq8J6/8SQXx8ck2s8O8ZXoUr7/vmPfMXvJ/yMwlFIlPh2kQ7cv6d5N3NJRn0u8YOb7DVH9e20cZbbBBlP9TMD5V84H5yHxiPlNc/m4ysxPA5fbTcRgqvyet14Qp9i51PJqhnsSif/28cdf1UReX0DlgDpkj5gvF5S/HvDdJ27o8TumxulDGtespBoJmhktNy/aLOq75KskrN5vjr6mP6bisZNQRAuIb9ZP5xnynu29lHfyVY6Vbu3y6K927NMR/mv6KsRU5icxHOmQ3P1WHN5S2Fs3DfJP1jayDv2Uh3Ds1jIGLv2r+kFeOHeybxtZmfprmdij5he9v5DT9naP7+zF1nxaLv6ZxcPFXPZOwLecbXd7lgo/zjjLc1fnbInd38/ZRZfQjFH9d8ocyHZZ5ic0ZyojM5x0tw/0q3NX52yZ3f2NYX8vy1yV/KMPhIucxujW8bYhRFe7q/N2i//2UuYHYQ4q5K89uxVzuEPxV6wghf/BFeg1vJH6YztTLdlfwnIqfm8aQH9i4Z/J32YGH5K90uE4exEqWv5Jzol9njMhtfyfXNCHlD6A+2PgrnB2kvB3c3b/n8BJVv38D9UL6K1xUfP2b+wlPdevtGd2uy7e/39A/p+EvKBuXPNeGqvsDAAAAAAAAAAAAAAAAAITEDcfa8TI=
+   eJztmLtOHDEUho+QVmxBSxKJgoiGSCGEmmYLSKBZiSYdSfYVcgNKXoBLkQdIlYh3oEi3tEAbCVqSjkSpcw67VswwnrF3vGOb+YtPM7saX+b4s+fYHSLqWDLHHEXCNWgMn8neUfgLYgP+gpSBvyBl4C9IGfg7Xv44Erq/qQF/43I5dB9jZ5p5wDxkHhH8jcXfa4K/NjxjFpnnzBLB3xjcxfprzwvmJbPGrBP89cGpxTM+/LVpp6z8WYD4+OQ184Z5y/QoLX/b2v075j3zcfj7nJkcUiU+3UE7u6r+D8M22toz2TauHNsw1V/W96uCPtgg5X9WjE9oPjFbzDazQ+n4O8PTrcXXUeCyl9k4nGv3VerOwxR7lzqmJqinGPUddfLesaxMjOwx+8wBc0jp+Hs0iHlvlL7ljdWvzLj6iIEwT/TFFPt5y/5LHX/5qigr1ypos+gds3F5WlBHDMg36pj5ynyjwbeyCf6qsTLhy13l3m9D/Mfpr4yt5CQqH+mS3fzUHV7R+lo1D/MN9/HxOMcvdn/rQtz7YRgDF3/1/KGs3AY/X2V+jpqT1O3uOMfNh7+yZkzS7f2Yvk9LxV/TOLj4q59J2JbzTVWHfZx31OFunr8L5OauzR5qI8AYhvLXJX+o02GVl9icoRSddywY/g/hbp6/q+S+/qawvtblr0v+UIfDVZjJicmqIUYh3M3zd5Pu+qlyA9lDytxVZ7cyl7sEf/U6YsgffJF1WNbpTTKfqdftrrBM1edpCvmBjXsmf584cJ/8VQ67ELq/TaXIX8Ul0fcLRnLbk+E1S0z5A2gONv6Ks/2Mt/3B/7ccnqXw+zfQLJS/4qLm6666F0/z1tsLulmXb+5f0X+n4S+oG5c814bQ7wMAAAAAAAAAAAAAAAAAxMQ/XrPk2Q==
   </data>
  </layer>
- <objectgroup id="3" name="ground">
+ <objectgroup id="3" name="ground" visible="0">
   <object id="48" x="190.924" y="302.909" width="272" height="16"/>
   <object id="49" x="174.924" y="78.9091" width="16" height="240"/>
   <object id="50" x="446.924" y="270.909" width="16" height="32"/>
@@ -91,7 +91,7 @@
   <object id="174" x="448" y="256" width="16" height="16"/>
   <object id="175" x="576" y="176" width="16" height="16"/>
  </objectgroup>
- <objectgroup id="5" name="platforms">
+ <objectgroup id="5" name="platforms" visible="0">
   <object id="122" x="1520" y="320.667">
    <polyline points="0,0 48,0"/>
   </object>
@@ -117,7 +117,7 @@
    <polyline points="0,0 48,0"/>
   </object>
  </objectgroup>
- <objectgroup id="6" name="objects">
+ <objectgroup id="6" name="objects" visible="0">
   <object id="130" x="2656.25" y="158" width="27.5" height="49">
    <ellipse/>
   </object>
