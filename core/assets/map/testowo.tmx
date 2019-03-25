@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.2" tiledversion="1.2.3" orientation="orthogonal" renderorder="right-down" width="176" height="32" tilewidth="16" tileheight="16" infinite="0" nextlayerid="7" nextobjectid="132">
+<map version="1.2" tiledversion="1.2.3" orientation="orthogonal" renderorder="right-down" width="176" height="32" tilewidth="16" tileheight="16" infinite="0" nextlayerid="8" nextobjectid="154">
  <tileset firstgid="1" source="dirt-tiles16x16.tsx"/>
  <tileset firstgid="385" source="castle_tileset_part1.tsx"/>
  <layer id="4" name="Warstwa Kafelków 1" width="176" height="32">
   <data encoding="base64" compression="zlib">
-   eJztmD9TFDEYh1+YueEKWv50zNAcMyJS21CIaHPDNXai9xVAQEq+AGrBB7hKhu9gYYet0jpztqcdOta+udtAbkl2k9vcbuL+imf2bmeTTd48Sd7NFhFtWbLKXAbCDagN52TvKPwFoQF/QczAXxAz8BfEDPydLn8cqbq9sQF/w3K56jaGzgKzyCwxywR/Q/H3huCvDQ+ZDeYRs0nwNwR3sf7a85TZYZ4xzwn++uCrxTM+/LV5T175bxXExyd7zCvmNdOleP3dZw6Yw+T/NTOXUCQ+baZJdCrrf5O8o6k8k37HwPEdpvrz2j7IaIMNovzPgvGpmiPmmHnLnFBc/u4yjQngcqfpOFwrvyet14Qp9i51zM9SV2LRv17euOv6qItL6Jwx75j3zAeKy1+OeXeStnV4nNJj9UsZ146nGAhaGS61LNsv6vjLV0leuUaOv6Y+puPyIKOOEBB71CfmI3NBo72yDv7KsdKtXT7dle79NsR/mv6KsRU5icxH2mQ3P1WHnyhtLZqH+SZrj6yDv2Uh3PtuGAMXf9X8Ia8cO9gzja3N/DTN7VDyC9975DT9naPx7zH1Oy0Wf03j4OKveiZhW843urzLBR/nHWW4q/N3ndzdFXvgDJn3iTL6EYq/LvlDmQ7LvMTmDGVA5vOOdcP9KtzV+btN7v7GsL6W5a9L/lCGw0XOY3Rr+LYhRlW4q/P3Jd33U+YG4htSzF15divmcpvgr1pHCPmDL9JreDPxw3SmXra7gsdU/Nw0hvzAxj2Tv2sO/E/+Sofr5EGsZPkr+UH0uc+I3PZLck0TUv4A6oONv8LZq5S3V6P7Yw6vUPXfb6BeSH+Fi4qvt7mf8FS33vZpuC4Pf7+gO6fhLygblzzXhqr7AwAAAAAAAAAAAAAAAACExD8EBvDn
+   eJztmL1SVDEUx884w7CFrV8VMzQ4I4q1DQVfNjtrY+fHvoKKYMkLKBQ8ABWM70Bhh63SOoPtaoeOtefAjYZrskn2hpvE+y9+c5flJjf3nF+yJ1kkokVPZpn3mXAKOsMu+TsKf0FuwF9QMvAXlAz8BSUDfy+Xn4GkHm9pwN+8XE49xty5xlxnbjA3Cf7m4u8pwV8f7jL3mAXmPsHfHNzF+uvPCrPKrDEPCf7G4JPHPTH89XmOq/3nBPGJyVPmGfOcGVK5/r5gXjLr1d/HzHRFk/j0mR7Rlur/VfWMnnZP/RmjwGfY+neNfTRmDD5I+28N45Oa18wGs8m8obL8lRxPTUDfEIdj7bP0e2vCvk3YYh/Sx9UrNFS47h0Q7bnyPjC320rtYyhvmXfMNrNDZfnLMR9OMrZHnCd9/RS+V9f++f+jxECYG+PSnOf4pY9ffFW42k05/B1Y3lHiojt8Z0wfOSA5PGT2mYMqd13wV+XKtHbFdFe598MS/8v0V3IrNYmqR9Rvjs1dk8NL2lib1mGxMf1+KLrgb1uIe18sOQjxV68fXO3YwT1bbn3mp21u51JfuOZgTv5O08X9mL5PK8VfWx5C/NXPJHzbxaZeX4QS47yjDXdN/s5TuLuu/Vkb75GLvyH1Q5sOq7rE5wxlRPbzjnnL9yncNfm7TOH+lrC+tuVvSP3QhsNNzmNMa/iyJUYp3DX5+4T+9VPVBrKHlLmrzm5lLvcJ/up95FA/xKK+hvcqP2xn6m27Kzyg5uemJdQHPu7Z/L0dwP/kr3K4Sx6Uyjh/FV+JPpwwUtt+rK51cqofQHfw8VecPap5e3T+/QWHZyj9/g10C+WvuKj5+qf2E09N6+0Jna3LZ58f01+n4S9om5A614fU7wMAAAAAAAAAAAAAAAAA5MRvAzzvJg==
   </data>
  </layer>
  <objectgroup id="3" name="ground">
@@ -38,6 +38,27 @@
   <object id="119" x="2702.92" y="14.9091" width="16" height="192"/>
   <object id="120" x="174.924" y="-1.09091" width="16" height="80"/>
   <object id="121" x="2702.92" y="-1.09091" width="16" height="16"/>
+  <object id="133" x="800" y="192" width="16" height="16"/>
+  <object id="134" x="816" y="208" width="16" height="16"/>
+  <object id="135" x="912" y="208" width="16" height="16"/>
+  <object id="136" x="928" y="192" width="16" height="16"/>
+  <object id="137" x="1824" y="208" width="16" height="16"/>
+  <object id="138" x="1808" y="224" width="16" height="16"/>
+  <object id="139" x="1840" y="192" width="16" height="16"/>
+  <object id="140" x="1920" y="192" width="16" height="16"/>
+  <object id="141" x="1936" y="208" width="16" height="16"/>
+  <object id="142" x="1952" y="224" width="16" height="16"/>
+  <object id="143" x="2048" y="240" width="16" height="16"/>
+  <object id="144" x="2064" y="256" width="16" height="16"/>
+  <object id="145" x="2080" y="272" width="16" height="16"/>
+  <object id="146" x="2336" y="288" width="16" height="16"/>
+  <object id="147" x="2352" y="304" width="16" height="16"/>
+  <object id="148" x="2528" y="304" width="16" height="16"/>
+  <object id="149" x="2544" y="288" width="16" height="16"/>
+  <object id="150" x="2560" y="272" width="16" height="16"/>
+  <object id="151" x="2576" y="256" width="16" height="16"/>
+  <object id="152" x="2592" y="240" width="16" height="16"/>
+  <object id="153" x="2608" y="224" width="16" height="16"/>
  </objectgroup>
  <objectgroup id="5" name="platforms">
   <object id="122" x="1520" y="320.667">

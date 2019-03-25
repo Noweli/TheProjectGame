@@ -57,6 +57,7 @@ public class PlayScreen implements Screen {
 		world.step(1 / 60f, 6, 2);
 		camera.cameraUpdate(player.b2body.getPosition().x, player.b2body.getPosition().y);
 		map.setRenderView(camera.getCamera());
+		
 	}
 
 	@Override
