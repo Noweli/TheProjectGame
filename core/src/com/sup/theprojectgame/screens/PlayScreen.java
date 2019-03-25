@@ -6,6 +6,7 @@ package com.sup.theprojectgame.screens;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Screen;
 import com.badlogic.gdx.graphics.GL20;
+import com.badlogic.gdx.graphics.g2d.TextureAtlas;
 import com.badlogic.gdx.math.Vector2;
 import com.badlogic.gdx.physics.box2d.Box2DDebugRenderer;
 import com.badlogic.gdx.physics.box2d.World;
@@ -26,6 +27,9 @@ public class PlayScreen implements Screen {
 	private World world;
 	private Box2DDebugRenderer b2dr;
 	private Player player;
+	
+	//Texture packs
+	private TextureAtlas atlas;
 
 	public PlayScreen(TheProjectGame game) {
 		this.game = game;
@@ -36,8 +40,11 @@ public class PlayScreen implements Screen {
 
 		world = new World(new Vector2(0, -10), true);
 		b2dr = new Box2DDebugRenderer();
-		player = new Player(world);
-
+		
+		
+		atlas = new TextureAtlas("sprites/player.pack");
+		
+		player = new Player(world, this);
 		new WorldCreator(world, map.getMap());
 
 	}
@@ -70,6 +77,11 @@ public class PlayScreen implements Screen {
 		map.renderMap();
 
 		b2dr.render(world, camera.getCamera().combined);
+		
+		game.batch.setProjectionMatrix(camera.getCamera().combined);
+		game.batch.begin();
+		player.draw(game.batch);
+		game.batch.end();
 
 		game.batch.setProjectionMatrix(hud.stage.getCamera().combined);
 		hud.stage.draw();
@@ -100,6 +112,10 @@ public class PlayScreen implements Screen {
 		map.dispose();
 		world.dispose();
 		b2dr.dispose();
+	}
+	
+	public TextureAtlas getAtlas() {
+		return atlas;
 	}
 
 }

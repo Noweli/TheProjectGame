@@ -1,0 +1,26 @@
+
+player.png
+format: RGBA8888
+filter: Nearest,Nearest
+repeat: none
+player
+  rotate: false
+  xy: 1, 1
+  size: 16, 32
+  orig: 16, 32
+  offset: 0, 0
+  index: -1
+playerv2_standin
+  rotate: false
+  xy: 19, 1
+  size: 16, 32
+  orig: 16, 32
+  offset: 0, 0
+  index: -1
+player_attack
+  rotate: false
+  xy: 37, 1
+  size: 16, 32
+  orig: 16, 32
+  offset: 0, 0
+  index: -1

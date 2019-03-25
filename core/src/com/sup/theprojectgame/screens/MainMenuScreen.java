@@ -20,7 +20,11 @@ public class MainMenuScreen implements Screen {
 	private static final int EXIT_BUTTON_Y = 100;
 
 	TheProjectGame game;
+	
+	//Background Texture
+	Texture background;
 
+	//Buttons Textures
 	Texture playButtonActive;
 	Texture playButtonInactive;
 	Texture settingsButtonActive;
@@ -32,6 +36,8 @@ public class MainMenuScreen implements Screen {
 
 		this.game = game;
 
+		background = new Texture("menu/background.png");
+		
 		playButtonActive = new Texture("menu/startinactive.png");
 		playButtonInactive = new Texture("menu/startactive.png");
 		settingsButtonActive = new Texture("menu/settingsinactive.png");
@@ -53,6 +59,8 @@ public class MainMenuScreen implements Screen {
 		Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT);
 
 		game.batch.begin();
+		
+		game.batch.draw(background, 0, 0, 800, 600);
 
 		int x;
 
