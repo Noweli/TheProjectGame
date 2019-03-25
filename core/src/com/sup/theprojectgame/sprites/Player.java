@@ -1,3 +1,6 @@
+//Main character class
+//Contains his shape, body and abilities
+
 package com.sup.theprojectgame.sprites;
 
 import com.badlogic.gdx.Gdx;

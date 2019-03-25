@@ -18,7 +18,7 @@ public class GameCamera {
 	public GameCamera() {
 		setCamera(new OrthographicCamera());
 		setViewPort(new FitViewport(TheProjectGame.GAME_WIDTH / TheProjectGame.PIXELSCALE + cameraZoom,
-				TheProjectGame.GAME_HEIGHT / TheProjectGame.PIXELSCALE + cameraZoom - 1.5f, getCamera()));
+				TheProjectGame.GAME_HEIGHT / TheProjectGame.PIXELSCALE + cameraZoom - 1.1f, getCamera()));
 
 		getCamera().position.set(getViewPort().getWorldWidth() / 2, getViewPort().getWorldHeight() / 2, 0);
 	}

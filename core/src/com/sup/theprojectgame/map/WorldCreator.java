@@ -1,3 +1,6 @@
+//WorldCreator makes Ground objects to collide with player
+//giving him possibility to move through the World
+
 package com.sup.theprojectgame.map;
 
 import com.badlogic.gdx.maps.MapObject;

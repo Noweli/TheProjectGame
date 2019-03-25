@@ -1,3 +1,6 @@
+//Static sprites here
+//Only objects that cannot move should inherit from it
+
 package com.sup.theprojectgame.sprites;
 
 import com.badlogic.gdx.maps.tiled.TiledMap;
@@ -9,13 +12,13 @@ import com.badlogic.gdx.physics.box2d.PolygonShape;
 import com.badlogic.gdx.physics.box2d.World;
 import com.sup.theprojectgame.TheProjectGame;
 
-public abstract class SpriteObject {
+public abstract class StaticSpriteObject {
 	protected World world;
 	protected TiledMap map;
 	protected Rectangle bounds;
 	protected Body body;
 
-	public SpriteObject(World world, TiledMap map, Rectangle bounds) {
+	public StaticSpriteObject(World world, TiledMap map, Rectangle bounds) {
 		this.world = world;
 		this.map = map;
 		this.bounds = bounds;

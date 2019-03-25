@@ -1,10 +1,12 @@
+//Ground class for collision detection
+
 package com.sup.theprojectgame.sprites;
 
 import com.badlogic.gdx.maps.tiled.TiledMap;
 import com.badlogic.gdx.math.Rectangle;
 import com.badlogic.gdx.physics.box2d.World;
 
-public class Ground extends SpriteObject {
+public class Ground extends StaticSpriteObject {
 
 	public Ground(World world, TiledMap map, Rectangle bounds) {
 		super(world, map, bounds);
