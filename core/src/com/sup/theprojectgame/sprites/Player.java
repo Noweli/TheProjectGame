@@ -12,6 +12,7 @@ import com.badlogic.gdx.physics.box2d.Body;
 import com.badlogic.gdx.physics.box2d.BodyDef;
 import com.badlogic.gdx.physics.box2d.CircleShape;
 import com.badlogic.gdx.physics.box2d.FixtureDef;
+import com.badlogic.gdx.physics.box2d.PolygonShape;
 import com.badlogic.gdx.physics.box2d.World;
 import com.sup.theprojectgame.TheProjectGame;
 import com.sup.theprojectgame.screens.PlayScreen;
@@ -24,11 +25,11 @@ public class Player extends Sprite {
 	public Body b2body;
 
 	public Player(World world, PlayScreen playsc) {
-		super(playsc.getAtlas().findRegion("player"));
+		super(playsc.getAtlas().findRegion("player_attack"));
 		this.world = world;
 		definePlayer();
 
-		playerStandin = new TextureRegion(getTexture(), 0, 0, 16, 32);
+		playerStandin = new TextureRegion(getTexture(), 37, 0, 16, 32);
 		setBounds(0, 0, 16 / TheProjectGame.PIXELSCALE, 32 / TheProjectGame.PIXELSCALE);
 		setRegion(playerStandin);
 	}
@@ -41,9 +42,12 @@ public class Player extends Sprite {
 		b2body = world.createBody(bdef);
 
 		FixtureDef fdef = new FixtureDef();
+		PolygonShape rec = new PolygonShape();
 		CircleShape shape = new CircleShape();
+		
+		rec.setAsBox(getWidth() / TheProjectGame.PIXELSCALE / 2, getHeight() / TheProjectGame.PIXELSCALE / 2);
 		shape.setRadius(5 / TheProjectGame.PIXELSCALE);
-		fdef.shape = shape;
+		fdef.shape = rec;
 		b2body.createFixture(fdef);
 	}
 
@@ -60,6 +64,6 @@ public class Player extends Sprite {
 	}
 	
 	public void updateSprite(float dt) {
-		setPosition(b2body.getPosition().x - getWidth() / 2, (b2body.getPosition().y - getHeight() / 2) + 0.21f);
+		setPosition(b2body.getPosition().x - getWidth() / 2, (b2body.getPosition().y - getHeight() / 2));
 	}
 }

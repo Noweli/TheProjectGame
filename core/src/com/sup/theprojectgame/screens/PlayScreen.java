@@ -36,9 +36,9 @@ public class PlayScreen implements Screen {
 
 		camera = new GameCamera();
 		hud = new Hud(game.batch);
-		map = new MapController("map/Level_1 (dziwne podloze).tmx");
+		map = new MapController("map/Level_1 (kwadraty).tmx");
 
-		world = new World(new Vector2(0, -10), true);
+		world = new World(new Vector2(0, -13), true);
 		b2dr = new Box2DDebugRenderer();
 		
 		
