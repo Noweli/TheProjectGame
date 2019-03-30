@@ -53,8 +53,15 @@ public class Player extends Sprite {
 
 	public void movePlayer(float dt) {
 		if (Gdx.input.isKeyJustPressed(Input.Keys.UP) && !world.getContactList().isEmpty()
-				&& b2body.getLinearVelocity().y <= 2f)
-			b2body.applyLinearImpulse(new Vector2(0, 4f), b2body.getWorldCenter(), true);
+				&& b2body.getLinearVelocity().y <= 2f) {
+			if(Gdx.input.isKeyPressed(Input.Keys.RIGHT) && b2body.getLinearVelocity().x == 0f)
+				b2body.applyLinearImpulse(new Vector2(-3f, 5f), b2body.getWorldCenter(), true);
+			else if(Gdx.input.isKeyPressed(Input.Keys.LEFT) && b2body.getLinearVelocity().x == 0f)
+				b2body.applyLinearImpulse(new Vector2(3f, 5f), b2body.getWorldCenter(), true);
+			else
+				b2body.applyLinearImpulse(new Vector2(0, 5.8f), b2body.getWorldCenter(), true);
+		}
+
 		if (Gdx.input.isKeyPressed(Input.Keys.RIGHT) && b2body.getLinearVelocity().x <= 2.5)
 			b2body.applyLinearImpulse(new Vector2(0.1f, 0), b2body.getWorldCenter(), true);
 		if (Gdx.input.isKeyPressed(Input.Keys.LEFT) && b2body.getLinearVelocity().x >= -2.5)
