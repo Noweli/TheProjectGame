@@ -42,7 +42,7 @@ public class PlayScreen implements Screen {
 		b2dr = new Box2DDebugRenderer();
 		
 		
-		atlas = new TextureAtlas("sprites/player.pack");
+		atlas = new TextureAtlas("sprites/Placeholder.pack");
 		
 		player = new Player(world, this);
 		new WorldCreator(world, map.getMap());
