@@ -5,22 +5,20 @@ package com.sup.theprojectgame.sprites;
 
 import com.badlogic.gdx.maps.tiled.TiledMap;
 import com.badlogic.gdx.math.Rectangle;
-import com.badlogic.gdx.physics.box2d.Body;
-import com.badlogic.gdx.physics.box2d.BodyDef;
-import com.badlogic.gdx.physics.box2d.FixtureDef;
-import com.badlogic.gdx.physics.box2d.PolygonShape;
-import com.badlogic.gdx.physics.box2d.World;
+import com.badlogic.gdx.physics.box2d.*;
 import com.sup.theprojectgame.TheProjectGame;
+import com.sup.theprojectgame.screens.PlayScreen;
 
 public abstract class StaticSpriteObject {
 	protected World world;
 	protected TiledMap map;
 	protected Rectangle bounds;
 	protected Body body;
+	protected Fixture fixture;
 
-	public StaticSpriteObject(World world, TiledMap map, Rectangle bounds) {
-		this.world = world;
-		this.map = map;
+	public StaticSpriteObject(PlayScreen screen, Rectangle bounds) {
+		this.world = screen.getWorld();
+		this.map = screen.getMap().getMap();
 		this.bounds = bounds;
 
 		BodyDef bdef = new BodyDef();
@@ -37,7 +35,12 @@ public abstract class StaticSpriteObject {
 		shape.setAsBox((bounds.getWidth() / 2) / TheProjectGame.PIXELSCALE,
 				(bounds.getHeight() / 2) / TheProjectGame.PIXELSCALE);
 		fdef.shape = shape;
-		body.createFixture(fdef);
+		fixture = body.createFixture(fdef);
 	}
 
+	public void setCategoryBit(short bit){
+		Filter filter = new Filter();
+		filter.categoryBits = bit;
+		fixture.setUserData(filter);
+	}
 }

@@ -9,14 +9,10 @@ import com.badlogic.gdx.graphics.g2d.Animation;
 import com.badlogic.gdx.graphics.g2d.Sprite;
 import com.badlogic.gdx.graphics.g2d.TextureRegion;
 import com.badlogic.gdx.math.Vector2;
-import com.badlogic.gdx.physics.box2d.Body;
-import com.badlogic.gdx.physics.box2d.BodyDef;
-import com.badlogic.gdx.physics.box2d.CircleShape;
-import com.badlogic.gdx.physics.box2d.FixtureDef;
-import com.badlogic.gdx.physics.box2d.PolygonShape;
-import com.badlogic.gdx.physics.box2d.World;
+import com.badlogic.gdx.physics.box2d.*;
 import com.badlogic.gdx.utils.Array;
 import com.sup.theprojectgame.TheProjectGame;
+import com.sup.theprojectgame.collision.SpriteCollisionBits;
 import com.sup.theprojectgame.screens.PlayScreen;
 
 public class Player extends Sprite {
@@ -27,16 +23,16 @@ public class Player extends Sprite {
 	private boolean runningRight;
 	private float stateTimer;
 
-	public enum State { RUNNING, STANDING, JUMPING };
+	public enum State { RUNNING, STANDING, JUMPING }
 	public State currentState;
 	public State previousState;
 
 	public World world;
 	public Body b2body;
 
-	public Player(World world, PlayScreen playsc) {
-		super(playsc.getAtlas().findRegion("Idle"));
-		this.world = world;
+	public Player(PlayScreen playsc) {
+		super(playsc.getAtlas().findRegion("1player"));
+		this.world = playsc.getWorld();
 
 		playerStandin = new TextureRegion(getTexture(), 0, 2, 32, 32);
 		currentState = State.STANDING;
@@ -45,15 +41,14 @@ public class Player extends Sprite {
 		runningRight = true;
 
 		Array<TextureRegion> frames = new Array<TextureRegion>();
-		for(int i = 3; i < 8; i++) {
-			frames.add(new TextureRegion(getTexture(), i * 34, 2, 32, 32));
+		for(int i = 0; i < 2; i++) {
+			frames.add(new TextureRegion(getTexture(), i * 36, 2, 32, 32));
 		}
 		playerRun = new Animation(0.08f, frames);
 		frames.clear();
 
-		for(int i = 1; i < 3; i++) {
-			frames.add(new TextureRegion(getTexture(), i*34, 2, 32, 32));
-		}
+		frames.add(new TextureRegion(getTexture(), 36, 2, 32, 32));
+
 		playerJump = new Animation(0.06f, frames);
 
 		definePlayer();
@@ -71,25 +66,26 @@ public class Player extends Sprite {
 
 		FixtureDef fdef = new FixtureDef();
 		PolygonShape rec = new PolygonShape();
-		CircleShape shape = new CircleShape();
 		
 		rec.setAsBox(getWidth() / 2 / TheProjectGame.PIXELSCALE / 2, getHeight() / TheProjectGame.PIXELSCALE / 2);
-		shape.setRadius(5 / TheProjectGame.PIXELSCALE);
+
+		fdef.filter.categoryBits = SpriteCollisionBits.PLAYER_BIT;
+		fdef.filter.maskBits = SpriteCollisionBits.ENEMY_BIT | SpriteCollisionBits.GROUND_BIT | SpriteCollisionBits.WALL_BIT;
+
 		fdef.shape = rec;
 		b2body.createFixture(fdef);
+
+		EdgeShape head = new EdgeShape();
+		head.set(new Vector2(-2 / TheProjectGame.PIXELSCALE, getHeight() / 2 / TheProjectGame.PIXELSCALE), new Vector2(2 / TheProjectGame.PIXELSCALE, getHeight() / 2 / TheProjectGame.PIXELSCALE));
+		fdef.shape = head;
+		fdef.isSensor = true;
+
+		b2body.createFixture(fdef).setUserData("head");
 	}
 
 	public void movePlayer(float dt) {
-		if (Gdx.input.isKeyJustPressed(Input.Keys.UP) && !world.getContactList().isEmpty()
-				&& b2body.getLinearVelocity().y <= 2f) {
-			if(Gdx.input.isKeyPressed(Input.Keys.RIGHT) && b2body.getLinearVelocity().x == 0f)
-				b2body.applyLinearImpulse(new Vector2(-3f, 5f), b2body.getWorldCenter(), true);
-			else if(Gdx.input.isKeyPressed(Input.Keys.LEFT) && b2body.getLinearVelocity().x == 0f)
-				b2body.applyLinearImpulse(new Vector2(3f, 5f), b2body.getWorldCenter(), true);
-			else
+		if (Gdx.input.isKeyJustPressed(Input.Keys.UP) && !world.getContactList().isEmpty() && b2body.getLinearVelocity().y <= 2f)
 				b2body.applyLinearImpulse(new Vector2(0, 5.8f), b2body.getWorldCenter(), true);
-		}
-
 		if (Gdx.input.isKeyPressed(Input.Keys.RIGHT) && b2body.getLinearVelocity().x <= 2.5)
 			b2body.applyLinearImpulse(new Vector2(0.1f, 0), b2body.getWorldCenter(), true);
 		if (Gdx.input.isKeyPressed(Input.Keys.LEFT) && b2body.getLinearVelocity().x >= -2.5)

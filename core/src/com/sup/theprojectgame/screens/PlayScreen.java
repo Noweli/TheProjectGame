@@ -15,6 +15,7 @@ import com.sup.theprojectgame.cameras.GameCamera;
 import com.sup.theprojectgame.map.MapController;
 import com.sup.theprojectgame.map.WorldCreator;
 import com.sup.theprojectgame.scenes.Hud;
+import com.sup.theprojectgame.sprites.Hedgehog;
 import com.sup.theprojectgame.sprites.Player;
 
 public class PlayScreen implements Screen {
@@ -26,26 +27,32 @@ public class PlayScreen implements Screen {
 
 	private World world;
 	private Box2DDebugRenderer b2dr;
+
+	//Interactive sprites
 	private Player player;
+	private Hedgehog hedgehog;
 	
 	//Texture packs
 	private TextureAtlas atlas;
+	private TextureAtlas enemyAtlas;
 
 	public PlayScreen(TheProjectGame game) {
 		this.game = game;
 
 		camera = new GameCamera();
 		hud = new Hud(game.batch);
-		map = new MapController("map/Level_1 (kwadraty).tmx");
+		map = new MapController("map/Level_1_newground.tmx");
 
 		world = new World(new Vector2(0, -13), true);
 		b2dr = new Box2DDebugRenderer();
 		
 		
-		atlas = new TextureAtlas("sprites/Placeholder.pack");
+		atlas = new TextureAtlas("sprites/player.atlas");
+		enemyAtlas = new TextureAtlas("sprites/enemies.atlas");
 		
-		player = new Player(world, this);
-		new WorldCreator(world, map.getMap());
+		player = new Player(this);
+		hedgehog = new Hedgehog(this, player.b2body.getPosition().x +10, player.b2body.getPosition().y);
+		new WorldCreator(this);
 
 	}
 
@@ -63,6 +70,7 @@ public class PlayScreen implements Screen {
 
 		world.step(1 / 60f, 6, 2);
 		camera.cameraUpdate(player.b2body.getPosition().x, player.b2body.getPosition().y);
+		hedgehog.update(dt);
 		map.setRenderView(camera.getCamera());
 		
 	}
@@ -81,6 +89,7 @@ public class PlayScreen implements Screen {
 		game.batch.setProjectionMatrix(camera.getCamera().combined);
 		game.batch.begin();
 		player.draw(game.batch);
+		hedgehog.draw(game.batch);
 		game.batch.end();
 
 		game.batch.setProjectionMatrix(hud.stage.getCamera().combined);
@@ -118,4 +127,15 @@ public class PlayScreen implements Screen {
 		return atlas;
 	}
 
+	public TextureAtlas getEnemyAtlas() {
+		return enemyAtlas;
+	}
+
+	public World getWorld() {
+		return world;
+	}
+
+	public MapController getMap() {
+		return map;
+	}
 }
