@@ -1,6 +1,7 @@
 package com.sup.theprojectgame;
 
 import com.badlogic.gdx.Game;
+import com.badlogic.gdx.assets.AssetManager;
 import com.badlogic.gdx.audio.Music;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.sup.theprojectgame.screens.MenuScreen;
@@ -19,33 +20,28 @@ public class TheProjectGame extends Game {
 	public final static int APPLICATION = 2;
 	public final static int ENDGAME = 3;
 
-	private AppPreferences preferences;
-	
-	private PreferencesScreen preferencesScreen;
+	//Czemu?
 	private MenuScreen menuScreen;
 	private PlayScreen mainScreen;
+	private PreferencesScreen preferencesScreen;
+
+	public static Music music;
 	
 	
 	public SpriteBatch batch;
-	public AssetsManager assets = new AssetsManager();
-	
-	private Music playingSong;
+
+
+	public static AssetManager manager;
 
 	@Override
 	public void create() {
 		batch = new SpriteBatch();
+		manager = new AssetManager();
+		loadMusic();
 		setScreen(new MenuScreen(this));
-		preferences = new AppPreferences();
-		
-		assets.queueAddMusic();
-		
-		assets.manager.finishLoading();
-		playingSong = assets.manager.get("music/Rolemusic_-_pl4y1ng.mp3");
-		
-		playingSong.setVolume(getPreferences().getMusicVolume());
-		playingSong.play();
 	}
 
+	//Czemu to tu jest?
 	public void changeScreen(int screen){
 		switch(screen){
 			case MENU:
@@ -58,13 +54,28 @@ public class TheProjectGame extends Game {
 				break;
 			case APPLICATION:
 				if(mainScreen == null) mainScreen = new PlayScreen(this);
+				changeMusic("music/calmAccusticMusic.mp3");
 				this.setScreen(mainScreen);
 				break;
 		}
 	}
-	
-	public AppPreferences getPreferences(){
-		return this.preferences;
+
+	public void loadMusic(){
+		manager.load("music/calmAccusticMusic.mp3", Music.class);
+		manager.load("music/role.mp3", Music.class);
+		manager.load("music/sombadi.mp3", Music.class);
+		manager.finishLoading();
+
+		music = TheProjectGame.manager.get("music/sombadi.mp3", Music.class);
+		music.setLooping(true);
+		music.play();
+	}
+
+	public static void changeMusic(String fileName){
+		music.stop();
+		music = TheProjectGame.manager.get(fileName, Music.class);
+		music.setLooping(true);
+		music.play();
 	}
 	
 	@Override

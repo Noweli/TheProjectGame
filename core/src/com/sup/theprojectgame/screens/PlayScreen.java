@@ -6,6 +6,7 @@ package com.sup.theprojectgame.screens;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Input;
 import com.badlogic.gdx.Screen;
+import com.badlogic.gdx.audio.Music;
 import com.badlogic.gdx.graphics.GL20;
 import com.badlogic.gdx.graphics.g2d.TextureAtlas;
 import com.badlogic.gdx.math.Vector2;
@@ -32,6 +33,7 @@ public class PlayScreen implements Screen {
 
 	private World world;
 	private Box2DDebugRenderer b2dr;
+
 
 	//Interactive sprites
 	private Player player;
@@ -62,6 +64,7 @@ public class PlayScreen implements Screen {
 		player = new Player(this);
 		hedgehog = new Hedgehog(this, player.b2body.getPosition().x, player.b2body.getPosition().y);
 		cat = new Cat(this, player.b2body.getPosition().x +10f, player.b2body.getPosition().y);
+
 		new WorldCreator(this);
 	}
 
@@ -82,6 +85,11 @@ public class PlayScreen implements Screen {
 		hedgehog.update(dt);
 		cat.update(dt);
 		map.setRenderView(camera.getCamera());
+
+		if(Gdx.input.isKeyJustPressed(Input.Keys.ESCAPE)) {
+			TheProjectGame.changeMusic("music/sombadi.mp3");
+			game.setScreen(new MenuScreen(game));
+		}
 	}
 
 	@Override

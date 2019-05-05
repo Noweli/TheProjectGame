@@ -1,20 +1,26 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="8e5ea91c-d6b4-4711-9f65-e5fdf2c0b585" name="Default Changelist" comment="Added:&#10;  -Player sprite with animation&#10;  -Collisions bits to distinguish collisions&#10;  -Enemy abstract class&#10;  -Hedgehog as a enemy&#10;  -Hedgehog with walkin animation&#10; Modified:&#10;   -Separated walls from ground&#10;   -Changed map to ..._newground &lt;- This map is broken Mateusz">
-      <change afterPath="$PROJECT_DIR$/core/src/com/sup/theprojectgame/sprites/Cat.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.gradle/4.6/fileHashes/fileHashes.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/4.6/fileHashes/fileHashes.bin" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.gradle/4.6/fileHashes/fileHashes.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/4.6/fileHashes/fileHashes.lock" afterDir="false" />
+    <list default="true" id="8e5ea91c-d6b4-4711-9f65-e5fdf2c0b585" name="Default Changelist" comment="Added:&#10;  -Cat with walking animation as enemy&#10;  -Enemies now walk towards player&#10;  -If they're stuck, they jump">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/core/build/classes/java/main/com/sup/theprojectgame/TheProjectGame.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/core/build/classes/java/main/com/sup/theprojectgame/scenes/Hud.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/core/build/classes/java/main/com/sup/theprojectgame/screens/PlayScreen.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/core/src/TODO list" beforeDir="false" afterPath="$PROJECT_DIR$/core/src/TODO list" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/core/assets/menu/Button_template.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/core/assets/menu/exitactive.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/core/assets/menu/exitinactive.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/core/assets/menu/settingsactive.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/core/assets/menu/settingsinactive.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/core/assets/menu/startactive.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/core/assets/menu/startactive2.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/core/assets/menu/startinactive.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/core/assets/music/Rolemusic_-_pl4y1ng.mp3" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/core/assets/skin/font-big-export.fnt" beforeDir="false" afterPath="$PROJECT_DIR$/core/assets/skin/font-big-export.fnt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/core/assets/skin/font-export.fnt" beforeDir="false" afterPath="$PROJECT_DIR$/core/assets/skin/font-export.fnt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/core/assets/skin/glassy-ui.json" beforeDir="false" afterPath="$PROJECT_DIR$/core/assets/skin/glassy-ui.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/core/src/com/sup/theprojectgame/AppPreferences.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/core/src/com/sup/theprojectgame/AssetsManager.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/core/src/com/sup/theprojectgame/TheProjectGame.java" beforeDir="false" afterPath="$PROJECT_DIR$/core/src/com/sup/theprojectgame/TheProjectGame.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/core/src/com/sup/theprojectgame/screens/MenuScreen.java" beforeDir="false" afterPath="$PROJECT_DIR$/core/src/com/sup/theprojectgame/screens/MenuScreen.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/core/src/com/sup/theprojectgame/screens/PlayScreen.java" beforeDir="false" afterPath="$PROJECT_DIR$/core/src/com/sup/theprojectgame/screens/PlayScreen.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/core/src/com/sup/theprojectgame/sprites/Enemy.java" beforeDir="false" afterPath="$PROJECT_DIR$/core/src/com/sup/theprojectgame/sprites/Enemy.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/core/src/com/sup/theprojectgame/sprites/Hedgehog.java" beforeDir="false" afterPath="$PROJECT_DIR$/core/src/com/sup/theprojectgame/sprites/Hedgehog.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/core/src/com/sup/theprojectgame/sprites/Player.java" beforeDir="false" afterPath="$PROJECT_DIR$/core/src/com/sup/theprojectgame/sprites/Player.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/desktop/build/classes/java/main/com/sup/theprojectgame/desktop/DesktopLauncher.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/core/src/com/sup/theprojectgame/screens/PreferencesScreen.java" beforeDir="false" afterPath="$PROJECT_DIR$/core/src/com/sup/theprojectgame/screens/PreferencesScreen.java" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/.gradle/" />
     <ignored path="$PROJECT_DIR$/build/" />
@@ -60,89 +66,45 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/core/src/com/sup/theprojectgame/TheProjectGame.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="60">
-              <caret line="9" selection-start-line="9" selection-end-line="9" />
+            <state relative-caret-position="236">
+              <caret line="73" column="17" selection-start-line="73" selection-start-column="17" selection-end-line="73" selection-end-column="17" />
+              <folding>
+                <element signature="imports" expanded="true" />
+                <element signature="e#1609#1610#0" expanded="true" />
+                <element signature="e#1630#1631#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/core/src/com/sup/theprojectgame/screens/PreferencesScreen.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="240">
+              <caret line="46" column="48" selection-start-line="46" selection-start-column="48" selection-end-line="46" selection-end-column="48" />
+              <folding>
+                <element signature="imports" expanded="true" />
+                <element signature="e#1913#2088#0" expanded="true" />
+                <element signature="e#2087#2088#0" expanded="true" />
+                <element signature="e#2287#2461#0" expanded="true" />
+                <element signature="e#2460#2461#0" expanded="true" />
+                <element signature="e#2981#3129#0" expanded="true" />
+                <element signature="e#3128#3129#0" expanded="true" />
+                <element signature="e#4341#4342#0" expanded="true" />
+                <element signature="e#4395#4396#0" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/core/src/com/sup/theprojectgame/sprites/Enemy.java">
+        <entry file="file://$PROJECT_DIR$/core/src/com/sup/theprojectgame/screens/MenuScreen.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="296">
-              <caret line="32" column="132" selection-start-line="32" selection-start-column="132" selection-end-line="32" selection-end-column="132" />
+            <state relative-caret-position="356">
+              <caret line="108" column="56" selection-start-line="108" selection-start-column="56" selection-end-line="108" selection-end-column="56" />
               <folding>
-                <element signature="imports" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/core/src/TODO list">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="105">
-              <caret line="7" column="40" selection-start-line="7" selection-start-column="40" selection-end-line="7" selection-end-column="40" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/core/src/com/sup/theprojectgame/sprites/Wall.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="165">
-              <caret line="11" column="53" selection-start-line="11" selection-start-column="53" selection-end-line="11" selection-end-column="53" />
-              <folding>
-                <element signature="imports" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/core/src/com/sup/theprojectgame/sprites/Hedgehog.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="189">
-              <caret line="21" column="40" selection-start-line="21" selection-start-column="40" selection-end-line="21" selection-end-column="40" />
-              <folding>
-                <element signature="imports" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/core/src/com/sup/theprojectgame/sprites/Cat.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="161">
-              <caret line="21" column="31" selection-start-line="21" selection-start-column="31" selection-end-line="21" selection-end-column="31" />
-              <folding>
-                <element signature="imports" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/core/src/com/sup/theprojectgame/sprites/StaticSpriteObject.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="165">
-              <caret line="12" column="4" selection-start-line="12" selection-start-column="4" selection-end-line="12" selection-end-column="4" />
-              <folding>
-                <element signature="imports" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/core/src/com/sup/theprojectgame/sprites/Player.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="281">
-              <caret line="61" column="59" selection-start-line="61" selection-start-column="59" selection-end-line="61" selection-end-column="66" />
-              <folding>
-                <element signature="imports" expanded="true" />
-                <element signature="e#1205#1220#0" expanded="true" />
+                <element signature="e#3002#3003#0" expanded="true" />
+                <element signature="e#3056#3057#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -151,10 +113,13 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/core/src/com/sup/theprojectgame/screens/PlayScreen.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="206">
-              <caret line="82" column="21" selection-start-line="82" selection-start-column="21" selection-end-line="82" selection-end-column="21" />
+            <state relative-caret-position="1005">
+              <caret line="89" column="58" selection-start-line="89" selection-start-column="58" selection-end-line="89" selection-end-column="58" />
               <folding>
-                <element signature="e#1315#1324#0" expanded="true" />
+                <element signature="e#3517#3518#0" expanded="true" />
+                <element signature="e#3581#3582#0" expanded="true" />
+                <element signature="e#3628#3629#0" expanded="true" />
+                <element signature="e#3679#3680#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -168,6 +133,11 @@
         <option value="Class" />
       </list>
     </option>
+  </component>
+  <component name="FindInProjectRecents">
+    <findStrings>
+      <find>white</find>
+    </findStrings>
   </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
@@ -185,9 +155,14 @@
         <option value="$PROJECT_DIR$/core/src/com/sup/theprojectgame/sprites/Wall.java" />
         <option value="$PROJECT_DIR$/core/src/com/sup/theprojectgame/sprites/Player.java" />
         <option value="$PROJECT_DIR$/core/src/com/sup/theprojectgame/sprites/Hedgehog.java" />
-        <option value="$PROJECT_DIR$/core/src/com/sup/theprojectgame/screens/PlayScreen.java" />
         <option value="$PROJECT_DIR$/core/src/com/sup/theprojectgame/sprites/Cat.java" />
         <option value="$PROJECT_DIR$/core/src/com/sup/theprojectgame/sprites/Enemy.java" />
+        <option value="$PROJECT_DIR$/core/src/com/sup/theprojectgame/AssetsManager.java" />
+        <option value="$PROJECT_DIR$/core/src/com/sup/theprojectgame/TheProjectGame.java" />
+        <option value="$PROJECT_DIR$/core/src/com/sup/theprojectgame/screens/PlayScreen.java" />
+        <option value="$PROJECT_DIR$/core/src/com/sup/theprojectgame/screens/PreferencesScreen.java" />
+        <option value="$PROJECT_DIR$/core/assets/skin/glassy-ui.json" />
+        <option value="$PROJECT_DIR$/core/src/com/sup/theprojectgame/screens/MenuScreen.java" />
       </list>
     </option>
   </component>
@@ -202,6 +177,7 @@
     </navigator>
     <panes>
       <pane id="PackagesPane" />
+      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -297,7 +273,6 @@
           <select />
         </subPane>
       </pane>
-      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -354,13 +329,20 @@
       <option name="presentableId" value="Default" />
       <updated>1556294523619</updated>
     </task>
+    <task id="LOCAL-00001" summary="Added:&#10;  -Cat with walking animation as enemy&#10;  -Enemies now walk towards player&#10;  -If they're stuck, they jump">
+      <created>1557065933416</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1557065933417</updated>
+    </task>
+    <option name="localTasksCounter" value="2" />
     <servers />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="-1" width="1920" height="1040" extended-state="6" />
-    <editor active="true" />
     <layout>
-      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.25506938" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.25773746" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Build Variants" order="2" side_tool="true" />
       <window_info id="Image Layers" order="3" />
@@ -370,7 +352,7 @@
       <window_info id="Favorites" order="7" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" />
-      <window_info active="true" anchor="bottom" id="Run" order="2" visible="true" weight="0.34388646" />
+      <window_info anchor="bottom" id="Run" order="2" weight="0.34388646" />
       <window_info anchor="bottom" id="Debug" order="3" weight="0.3995633" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
@@ -391,18 +373,22 @@
       <window_info anchor="right" id="Palette&#9;" order="8" />
     </layout>
   </component>
+  <component name="Vcs.Log.History.Properties">
+    <option name="COLUMN_ORDER">
+      <list>
+        <option value="0" />
+        <option value="2" />
+        <option value="3" />
+        <option value="1" />
+      </list>
+    </option>
+  </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="Added:&#10;  -Player sprite with animation&#10;  -Collisions bits to distinguish collisions&#10;  -Enemy abstract class&#10;  -Hedgehog as a enemy&#10;  -Hedgehog with walkin animation&#10; Modified:&#10;   -Separated walls from ground&#10;   -Changed map to ..._newground &lt;- This map is broken Mateusz" />
-    <option name="LAST_COMMIT_MESSAGE" value="Added:&#10;  -Player sprite with animation&#10;  -Collisions bits to distinguish collisions&#10;  -Enemy abstract class&#10;  -Hedgehog as a enemy&#10;  -Hedgehog with walkin animation&#10; Modified:&#10;   -Separated walls from ground&#10;   -Changed map to ..._newground &lt;- This map is broken Mateusz" />
+    <MESSAGE value="Added:&#10;  -Cat with walking animation as enemy&#10;  -Enemies now walk towards player&#10;  -If they're stuck, they jump" />
+    <option name="LAST_COMMIT_MESSAGE" value="Added:&#10;  -Cat with walking animation as enemy&#10;  -Enemies now walk towards player&#10;  -If they're stuck, they jump" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/core/src/com/sup/theprojectgame/screens/PreferencesScreen.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="150">
-          <caret line="26" column="35" selection-start-line="26" selection-start-column="35" selection-end-line="26" selection-end-column="35" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/desktop/src/com/sup/theprojectgame/desktop/DesktopLauncher.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="60">
@@ -467,20 +453,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/core/src/com/sup/theprojectgame/AppPreferences.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="60">
-          <caret line="5" column="13" selection-start-line="5" selection-start-column="13" selection-end-line="5" selection-end-column="13" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/core/src/com/sup/theprojectgame/AssetsManager.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="60">
-          <caret line="10" column="13" selection-start-line="10" selection-start-column="13" selection-end-line="10" selection-end-column="13" />
-        </state>
-      </provider>
-    </entry>
     <entry file="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/com.badlogicgames.gdx/gdx/1.9.9/1409aca6a4293a7ca8dbd60281c3211a195dd39a/gdx-1.9.9-sources.jar!/com/badlogic/gdx/graphics/g2d/Sprite.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="183">
@@ -517,10 +489,17 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/core/src/com/sup/theprojectgame/sprites/StaticSpriteObject.java">
+    <entry file="jar:///usr/lib/jvm/java-8-openjdk-amd64/jre/lib/rt.jar!/java/util/function/Consumer.class">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="165">
-          <caret line="12" column="4" selection-start-line="12" selection-start-column="4" selection-end-line="12" selection-end-column="4" />
+        <state relative-caret-position="105">
+          <caret line="8" column="9" selection-start-line="8" selection-start-column="9" selection-end-line="8" selection-end-column="9" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/core/src/com/sup/theprojectgame/sprites/Enemy.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="765">
+          <caret line="56" column="125" selection-start-line="56" selection-start-column="125" selection-end-line="56" selection-end-column="125" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
@@ -529,7 +508,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/core/src/com/sup/theprojectgame/sprites/Wall.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="165">
+        <state relative-caret-position="135">
           <caret line="11" column="53" selection-start-line="11" selection-start-column="53" selection-end-line="11" selection-end-column="53" />
           <folding>
             <element signature="imports" expanded="true" />
@@ -537,10 +516,38 @@
         </state>
       </provider>
     </entry>
-    <entry file="jar:///usr/lib/jvm/java-8-openjdk-amd64/jre/lib/rt.jar!/java/util/function/Consumer.class">
+    <entry file="file://$PROJECT_DIR$/core/src/com/sup/theprojectgame/sprites/Hedgehog.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="105">
-          <caret line="8" column="9" selection-start-line="8" selection-start-column="9" selection-end-line="8" selection-end-column="9" />
+        <state relative-caret-position="255">
+          <caret line="21" column="40" selection-start-line="21" selection-start-column="40" selection-end-line="21" selection-end-column="40" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/core/src/com/sup/theprojectgame/AppPreferences.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="315">
+          <caret line="26" column="63" selection-start-line="26" selection-start-column="63" selection-end-line="26" selection-end-column="63" />
+          <folding>
+            <element signature="e#820#821#0" expanded="true" />
+            <element signature="e#881#882#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/core/src/com/sup/theprojectgame/AssetsManager.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="165">
+          <caret line="17" column="66" selection-start-line="17" selection-start-column="66" selection-end-line="17" selection-end-column="66" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/com.badlogicgames.gdx/gdx/1.9.9/1409aca6a4293a7ca8dbd60281c3211a195dd39a/gdx-1.9.9-sources.jar!/com/badlogic/gdx/scenes/scene2d/ui/TextButton.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="191">
+          <caret line="32" selection-start-line="32" selection-end-line="32" />
         </state>
       </provider>
     </entry>
@@ -550,24 +557,16 @@
           <caret line="61" column="59" selection-start-line="61" selection-start-column="59" selection-end-line="61" selection-end-column="66" />
           <folding>
             <element signature="imports" expanded="true" />
-            <element signature="e#1205#1220#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/core/src/com/sup/theprojectgame/TheProjectGame.java">
+    <entry file="file://$PROJECT_DIR$/core/src/com/sup/theprojectgame/sprites/StaticSpriteObject.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="60">
-          <caret line="9" selection-start-line="9" selection-end-line="9" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/core/src/com/sup/theprojectgame/screens/PlayScreen.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="206">
-          <caret line="82" column="21" selection-start-line="82" selection-start-column="21" selection-end-line="82" selection-end-column="21" />
+        <state relative-caret-position="165">
+          <caret line="12" column="4" selection-start-line="12" selection-start-column="4" selection-end-line="12" selection-end-column="4" />
           <folding>
-            <element signature="e#1315#1324#0" expanded="true" />
+            <element signature="imports" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -582,22 +581,91 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/core/src/com/sup/theprojectgame/sprites/Hedgehog.java">
+    <entry file="file://$PROJECT_DIR$/core/src/com/sup/theprojectgame/scenes/Hud.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="189">
-          <caret line="21" column="40" selection-start-line="21" selection-start-column="40" selection-end-line="21" selection-end-column="40" />
+        <state relative-caret-position="210">
+          <caret line="16" column="13" selection-start-line="16" selection-start-column="13" selection-end-line="16" selection-end-column="13" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/core/src/com/sup/theprojectgame/sprites/Enemy.java">
+    <entry file="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/com.badlogicgames.gdx/gdx/1.9.9/1409aca6a4293a7ca8dbd60281c3211a195dd39a/gdx-1.9.9-sources.jar!/com/badlogic/gdx/Game.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="296">
-          <caret line="32" column="132" selection-start-line="32" selection-start-column="132" selection-end-line="32" selection-end-column="132" />
+        <state relative-caret-position="305">
+          <caret line="56" column="16" selection-start-line="56" selection-start-column="16" selection-end-line="56" selection-end-column="16" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/core/assets/skin/glassy-ui.json">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="285">
+          <caret line="76" column="24" selection-start-line="76" selection-start-column="24" selection-end-line="76" selection-end-column="24" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/core/src/com/sup/theprojectgame/TheProjectGame.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="236">
+          <caret line="73" column="17" selection-start-line="73" selection-start-column="17" selection-end-line="73" selection-end-column="17" />
           <folding>
             <element signature="imports" expanded="true" />
+            <element signature="e#1609#1610#0" expanded="true" />
+            <element signature="e#1630#1631#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/core/src/com/sup/theprojectgame/screens/PlayScreen.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1005">
+          <caret line="89" column="58" selection-start-line="89" selection-start-column="58" selection-end-line="89" selection-end-column="58" />
+          <folding>
+            <element signature="e#3517#3518#0" expanded="true" />
+            <element signature="e#3581#3582#0" expanded="true" />
+            <element signature="e#3628#3629#0" expanded="true" />
+            <element signature="e#3679#3680#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/com.badlogicgames.gdx/gdx/1.9.9/1409aca6a4293a7ca8dbd60281c3211a195dd39a/gdx-1.9.9-sources.jar!/com/badlogic/gdx/graphics/Texture.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="191">
+          <caret line="108" column="11" selection-start-line="108" selection-start-column="11" selection-end-line="108" selection-end-column="11" />
+          <folding>
+            <element signature="e#4241#4242#0" expanded="true" />
+            <element signature="e#4286#4287#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/core/src/com/sup/theprojectgame/screens/PreferencesScreen.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="240">
+          <caret line="46" column="48" selection-start-line="46" selection-start-column="48" selection-end-line="46" selection-end-column="48" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#1913#2088#0" expanded="true" />
+            <element signature="e#2087#2088#0" expanded="true" />
+            <element signature="e#2287#2461#0" expanded="true" />
+            <element signature="e#2460#2461#0" expanded="true" />
+            <element signature="e#2981#3129#0" expanded="true" />
+            <element signature="e#3128#3129#0" expanded="true" />
+            <element signature="e#4341#4342#0" expanded="true" />
+            <element signature="e#4395#4396#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/core/src/com/sup/theprojectgame/screens/MenuScreen.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="356">
+          <caret line="108" column="56" selection-start-line="108" selection-start-column="56" selection-end-line="108" selection-end-column="56" />
+          <folding>
+            <element signature="e#3002#3003#0" expanded="true" />
+            <element signature="e#3056#3057#0" expanded="true" />
           </folding>
         </state>
       </provider>

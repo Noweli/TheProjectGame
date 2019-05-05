@@ -3,6 +3,9 @@ package com.sup.theprojectgame.screens;
 
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Screen;
+import com.badlogic.gdx.assets.AssetManager;
+import com.badlogic.gdx.assets.loaders.SkinLoader;
+import com.badlogic.gdx.audio.Music;
 import com.badlogic.gdx.graphics.GL20;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.scenes.scene2d.Actor;
@@ -20,17 +23,24 @@ public class MenuScreen implements Screen{
 	private Stage stage;
 	private Skin skin;
 	private Texture background;
-	
+
+	public final AssetManager manager = new AssetManager();
+
 	public MenuScreen(TheProjectGame parent){
 		this.parent = parent;
 
 		stage = new Stage(new ScreenViewport());
-		
-		parent.assets.queueAddSkin();
-		parent.assets.manager.finishLoading();
-		skin = parent.assets.manager.get("skin/glassy-ui.json");
+
+		queueAddSkin();
+		manager.finishLoading();
+		skin = manager.get("skin/glassy-ui.json");
 		background = new Texture("menu/background.png");
-		
+	}
+
+	public void queueAddSkin(){
+		SkinLoader.SkinParameter params = new SkinLoader.SkinParameter("skin/glassy-ui.atlas");
+		manager.load("skin/glassy-ui.json", Skin.class, params);
+
 	}
 
 	@Override
