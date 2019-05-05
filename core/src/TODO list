@@ -3,16 +3,16 @@ TODO list
 
 Code:
 1. Animations - done [Maciej]
-2. Collision
-3. Interaction with objects on collision
-4. Expansion of HUD
-5. Implementation of music
-6, 7, 8. Implementing enemies
+2. Collision - done [Patryk]
+3. Interaction with objects on collision - done [Patryk]
+4. Expansion of HUD - rejected [Noubadi]
+5. Implementation of music - done [Gracjan]
+6, 7, 8. Implementing enemies - done [Patryk]
 
 Graph:
-1. Main character walking animation - in process [Kinga]
-	1.1 Main character attack animation - in process [Kinga]
-2. Enemies sprites with walking animation - in process [Kinga]
+1. Main character walking animation - done [Kinga]
+	1.1 Main character attack animation - done [Kinga]
+2. Enemies sprites with walking animation - done [Kinga]
 	2.1 Enemies attacking animation - todo [Kinga]
-3. Improvements in level 1 - in process [Mateusz (dobra robota)]
-4. Level 2 - i don't know [Mateusz]
+3. Improvements in level 1 - I guess done [Mateusz (dobra robota)]
+4. Level 2 - i don't know, probably never [Mateusz]

@@ -1,30 +1,31 @@
 package com.sup.theprojectgame.sprites;
 
 import com.badlogic.gdx.graphics.g2d.Animation;
-import com.badlogic.gdx.graphics.g2d.TextureRegion;;
+import com.badlogic.gdx.graphics.g2d.TextureRegion;
 import com.badlogic.gdx.utils.Array;
 import com.sup.theprojectgame.TheProjectGame;
 import com.sup.theprojectgame.screens.PlayScreen;
 
-public class Hedgehog extends Enemy {
+public class Cat extends Enemy {
 
     private float stateTime;
     private Animation walkAnimation;
     private Array<TextureRegion> frames;
 
-    public Hedgehog(PlayScreen screen, float x, float y) {
+    public Cat(PlayScreen screen, float x, float y) {
         super(screen, x, y);
-        setRegion(screen.getEnemyAtlas().findRegion("jez"));
+
+        setRegion(screen.getEnemyAtlas().findRegion("kitku"));
 
         frames = new Array<TextureRegion>();
 
-        for(int i = 0 ; i < 2; i++)
-            frames.add(new TextureRegion(getTexture(), i * 36, 2, 32, 32));
+        for(int i = 0 ; i <= 34; i+=34)
+            frames.add(new TextureRegion(getTexture(), i + 70, 2, 32, 32));
 
         walkAnimation = new Animation(0.4f, frames);
         stateTime = 0;
 
-        defineEnemy(8,8,0.5f,336,214.34f);
+        defineEnemy(8, 8, 0.5f, 336, 214.34f);
 
         setBounds(getX(), getY(), 32 / TheProjectGame.PIXELSCALE / 2, 32 / TheProjectGame.PIXELSCALE / 2);
     }

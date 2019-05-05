@@ -73,7 +73,7 @@ public class Player extends Sprite {
 		fdef.filter.maskBits = SpriteCollisionBits.ENEMY_BIT | SpriteCollisionBits.GROUND_BIT | SpriteCollisionBits.WALL_BIT;
 
 		fdef.shape = rec;
-		b2body.createFixture(fdef);
+		b2body.createFixture(fdef).setUserData("player");
 
 		EdgeShape head = new EdgeShape();
 		head.set(new Vector2(-2 / TheProjectGame.PIXELSCALE, getHeight() / 2 / TheProjectGame.PIXELSCALE), new Vector2(2 / TheProjectGame.PIXELSCALE, getHeight() / 2 / TheProjectGame.PIXELSCALE));
@@ -83,7 +83,7 @@ public class Player extends Sprite {
 		b2body.createFixture(fdef).setUserData("head");
 	}
 
-	public void movePlayer(float dt) {
+	public void updatePlayer(float dt) {
 		if (Gdx.input.isKeyJustPressed(Input.Keys.UP) && !world.getContactList().isEmpty() && b2body.getLinearVelocity().y <= 2f)
 				b2body.applyLinearImpulse(new Vector2(0, 5.8f), b2body.getWorldCenter(), true);
 		if (Gdx.input.isKeyPressed(Input.Keys.RIGHT) && b2body.getLinearVelocity().x <= 2.5)

@@ -4,17 +4,22 @@
 package com.sup.theprojectgame.screens;
 
 import com.badlogic.gdx.Gdx;
+import com.badlogic.gdx.Input;
 import com.badlogic.gdx.Screen;
 import com.badlogic.gdx.graphics.GL20;
 import com.badlogic.gdx.graphics.g2d.TextureAtlas;
 import com.badlogic.gdx.math.Vector2;
+import com.badlogic.gdx.physics.box2d.Body;
 import com.badlogic.gdx.physics.box2d.Box2DDebugRenderer;
+import com.badlogic.gdx.physics.box2d.Fixture;
 import com.badlogic.gdx.physics.box2d.World;
+import com.badlogic.gdx.utils.Array;
 import com.sup.theprojectgame.TheProjectGame;
 import com.sup.theprojectgame.cameras.GameCamera;
 import com.sup.theprojectgame.map.MapController;
 import com.sup.theprojectgame.map.WorldCreator;
 import com.sup.theprojectgame.scenes.Hud;
+import com.sup.theprojectgame.sprites.Cat;
 import com.sup.theprojectgame.sprites.Hedgehog;
 import com.sup.theprojectgame.sprites.Player;
 
@@ -31,10 +36,14 @@ public class PlayScreen implements Screen {
 	//Interactive sprites
 	private Player player;
 	private Hedgehog hedgehog;
+	private Cat cat;
 	
 	//Texture packs
 	private TextureAtlas atlas;
 	private TextureAtlas enemyAtlas;
+
+	//Fixture array
+	Array<Fixture> fixtures = new Array<Fixture>();
 
 	public PlayScreen(TheProjectGame game) {
 		this.game = game;
@@ -51,9 +60,9 @@ public class PlayScreen implements Screen {
 		enemyAtlas = new TextureAtlas("sprites/enemies.atlas");
 		
 		player = new Player(this);
-		hedgehog = new Hedgehog(this, player.b2body.getPosition().x +10, player.b2body.getPosition().y);
+		hedgehog = new Hedgehog(this, player.b2body.getPosition().x, player.b2body.getPosition().y);
+		cat = new Cat(this, player.b2body.getPosition().x +10f, player.b2body.getPosition().y);
 		new WorldCreator(this);
-
 	}
 
 	@Override
@@ -62,7 +71,7 @@ public class PlayScreen implements Screen {
 	}
 
 	public void handleInput(float dt) {
-		player.movePlayer(dt);
+		player.updatePlayer(dt);
 	}
 
 	public void update(float dt) {
@@ -71,8 +80,8 @@ public class PlayScreen implements Screen {
 		world.step(1 / 60f, 6, 2);
 		camera.cameraUpdate(player.b2body.getPosition().x, player.b2body.getPosition().y);
 		hedgehog.update(dt);
+		cat.update(dt);
 		map.setRenderView(camera.getCamera());
-		
 	}
 
 	@Override
@@ -90,6 +99,7 @@ public class PlayScreen implements Screen {
 		game.batch.begin();
 		player.draw(game.batch);
 		hedgehog.draw(game.batch);
+		cat.draw(game.batch);
 		game.batch.end();
 
 		game.batch.setProjectionMatrix(hud.stage.getCamera().combined);
@@ -99,6 +109,7 @@ public class PlayScreen implements Screen {
 	@Override
 	public void resize(int width, int height) {
 		camera.viewPortUpdate(width, height);
+
 	}
 
 	@Override
@@ -121,6 +132,11 @@ public class PlayScreen implements Screen {
 		map.dispose();
 		world.dispose();
 		b2dr.dispose();
+	}
+
+	public Array<Fixture> getWorldFixtures(){
+		world.getFixtures(fixtures);
+		return fixtures;
 	}
 	
 	public TextureAtlas getAtlas() {
