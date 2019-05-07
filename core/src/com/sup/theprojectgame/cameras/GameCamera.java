@@ -10,7 +10,7 @@ import com.badlogic.gdx.utils.viewport.Viewport;
 import com.sup.theprojectgame.TheProjectGame;
 
 public class GameCamera {
-	private float cameraZoom = -2.5f;
+	private float cameraZoom = -8.5f;
 
 	private OrthographicCamera camera;
 	private Viewport viewPort;
@@ -18,7 +18,7 @@ public class GameCamera {
 	public GameCamera() {
 		setCamera(new OrthographicCamera());
 		setViewPort(new FitViewport(TheProjectGame.GAME_WIDTH / TheProjectGame.PIXELSCALE + cameraZoom,
-				TheProjectGame.GAME_HEIGHT / TheProjectGame.PIXELSCALE + cameraZoom - 1.1f, getCamera()));
+				TheProjectGame.GAME_HEIGHT / TheProjectGame.PIXELSCALE + cameraZoom, getCamera()));
 
 		getCamera().position.set(getViewPort().getWorldWidth() / 2, getViewPort().getWorldHeight() / 2, 0);
 	}
@@ -38,15 +38,15 @@ public class GameCamera {
 		return camera;
 	}
 
-	public void setCamera(OrthographicCamera camera) {
+	private void setCamera(OrthographicCamera camera) {
 		this.camera = camera;
 	}
 
-	public Viewport getViewPort() {
+	private Viewport getViewPort() {
 		return viewPort;
 	}
 
-	public void setViewPort(Viewport viewPort) {
+	private void setViewPort(Viewport viewPort) {
 		this.viewPort = viewPort;
 	}
 

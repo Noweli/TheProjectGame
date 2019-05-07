@@ -11,8 +11,8 @@ import com.sup.theprojectgame.screens.PreferencesScreen;
 
 public class TheProjectGame extends Game {
 	// FINALS
-	public static final int GAME_WIDTH = 800;
-	public static final int GAME_HEIGHT = 600;
+	public static final int GAME_WIDTH = 1280;
+	public static final int GAME_HEIGHT = 800;
 	public static final float PIXELSCALE = 50;
 	
 	public final static int MENU = 0;
@@ -31,7 +31,7 @@ public class TheProjectGame extends Game {
 	public SpriteBatch batch;
 
 
-	public static AssetManager manager;
+	private static AssetManager manager;
 
 	@Override
 	public void create() {
@@ -61,7 +61,7 @@ public class TheProjectGame extends Game {
 		}
 	}
 
-	public void loadMusic(){
+	private void loadMusic(){
 		manager.load("music/calmAccusticMusic.mp3", Music.class);
 		manager.load("music/role.mp3", Music.class);
 		manager.load("music/sombadi.mp3", Music.class);
