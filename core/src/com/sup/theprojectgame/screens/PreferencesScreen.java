@@ -71,7 +71,7 @@ public class PreferencesScreen implements Screen{
 			@Override
 			public void changed(ChangeEvent event, Actor actor) {
 				parent.changeScreen(TheProjectGame.MENU);
-
+				TheProjectGame.changeMusic("music/sombadi.mp3");
 			}
 		});
 		

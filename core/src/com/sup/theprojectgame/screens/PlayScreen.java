@@ -17,6 +17,7 @@ import com.badlogic.gdx.physics.box2d.World;
 import com.badlogic.gdx.utils.Array;
 import com.sup.theprojectgame.TheProjectGame;
 import com.sup.theprojectgame.cameras.GameCamera;
+import com.sup.theprojectgame.collision.WorldContactListener;
 import com.sup.theprojectgame.map.MapController;
 import com.sup.theprojectgame.map.WorldCreator;
 import com.sup.theprojectgame.scenes.Hud;
@@ -33,6 +34,9 @@ public class PlayScreen implements Screen {
 
 	private World world;
 	private Box2DDebugRenderer b2dr;
+
+	//Collision system
+	WorldContactListener worldContactListener;
 
 
 	//Interactive sprites
@@ -53,9 +57,12 @@ public class PlayScreen implements Screen {
 		camera = new GameCamera();
 		hud = new Hud(game.batch);
 		map = new MapController("map/Level_1_newground.tmx");
+		worldContactListener = new WorldContactListener();
 
 		world = new World(new Vector2(0, -13), true);
 		b2dr = new Box2DDebugRenderer();
+
+		world.setContactListener(worldContactListener);
 		
 		
 		atlas = new TextureAtlas("sprites/player.atlas");

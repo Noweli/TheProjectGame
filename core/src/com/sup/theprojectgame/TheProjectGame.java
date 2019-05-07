@@ -50,6 +50,7 @@ public class TheProjectGame extends Game {
 				break;
 			case PREFERENCES:
 				if(preferencesScreen == null) preferencesScreen = new PreferencesScreen(this);
+				changeMusic("music/elevator.mp3");
 				this.setScreen(preferencesScreen);
 				break;
 			case APPLICATION:
@@ -64,6 +65,7 @@ public class TheProjectGame extends Game {
 		manager.load("music/calmAccusticMusic.mp3", Music.class);
 		manager.load("music/role.mp3", Music.class);
 		manager.load("music/sombadi.mp3", Music.class);
+		manager.load("music/elevator.mp3", Music.class);
 		manager.finishLoading();
 
 		music = TheProjectGame.manager.get("music/sombadi.mp3", Music.class);
@@ -72,9 +74,11 @@ public class TheProjectGame extends Game {
 	}
 
 	public static void changeMusic(String fileName){
+		float volume = music.getVolume();
 		music.stop();
 		music = TheProjectGame.manager.get(fileName, Music.class);
 		music.setLooping(true);
+		music.setVolume(volume);
 		music.play();
 	}
 	
