@@ -9,7 +9,6 @@
  </layer>
  <objectgroup id="3" name="Ground">
   <object id="1" x="192" y="304" width="272" height="16"/>
-  <object id="2" x="176" y="80" width="16" height="240"/>
   <object id="4" x="464" y="256" width="112" height="16"/>
   <object id="5" x="592" y="176" width="208" height="16"/>
   <object id="6" x="832" y="208" width="80" height="16"/>
@@ -24,9 +23,6 @@
   <object id="18" x="2624" y="208" width="80" height="16"/>
   <object id="35" x="1696" y="192" width="16" height="32"/>
   <object id="36" x="1248" y="368" width="320" height="16"/>
-  <object id="42" x="2704" y="16" width="16" height="192"/>
-  <object id="43" x="2704" y="0" width="16" height="16"/>
-  <object id="46" x="176" y="0" width="16" height="80"/>
   <object id="373" x="464" y="256" width="16" height="23" rotation="44"/>
   <object id="375" x="592" y="176" width="16" height="23" rotation="44"/>
   <object id="376" x="816" y="192" width="16" height="23" rotation="135"/>
@@ -45,6 +41,12 @@
   <object id="389" x="2080" y="256" width="16" height="23" rotation="135"/>
   <object id="390" x="2352" y="288" width="16" height="23" rotation="135"/>
   <object id="391" x="2368" y="304" width="16" height="23" rotation="135"/>
+  <object id="392" x="2624" y="208" width="16" height="23" rotation="45"/>
+  <object id="393" x="2608" y="224" width="16" height="23" rotation="45"/>
+  <object id="394" x="2592.18" y="239.89" width="16" height="23" rotation="45"/>
+  <object id="395" x="2576" y="256" width="16" height="23" rotation="45"/>
+  <object id="396" x="2560" y="272" width="16" height="23" rotation="45"/>
+  <object id="397" x="2544" y="288" width="16" height="23" rotation="45"/>
  </objectgroup>
  <objectgroup id="8" name="Ceiling">
   <object id="40" x="1360" y="304" width="144" height="16"/>
@@ -56,15 +58,12 @@
   <object id="38" x="1232" y="192" width="16" height="176"/>
   <object id="39" x="1344" y="192" width="16" height="128"/>
   <object id="41" x="1504" y="192" width="16" height="128"/>
+  <object id="42" x="2704" y="16" width="16" height="192"/>
+  <object id="43" x="2704" y="0" width="16" height="16"/>
+  <object id="2" x="176" y="80" width="16" height="240"/>
+  <object id="46" x="176" y="0" width="16" height="80"/>
  </objectgroup>
- <objectgroup id="4" name="Platforms">
-  <object id="392" x="2624" y="208" width="16" height="23" rotation="45"/>
-  <object id="393" x="2608" y="224" width="16" height="23" rotation="45"/>
-  <object id="394" x="2592.18" y="239.89" width="16" height="23" rotation="45"/>
-  <object id="395" x="2576" y="256" width="16" height="23" rotation="45"/>
-  <object id="396" x="2560" y="272" width="16" height="23" rotation="45"/>
-  <object id="397" x="2544" y="288" width="16" height="23" rotation="45"/>
- </objectgroup>
+ <objectgroup id="4" name="Platforms"/>
  <objectgroup id="5" name="Object">
   <object id="55" x="2658.5" y="158" width="27.5" height="49">
    <ellipse/>
