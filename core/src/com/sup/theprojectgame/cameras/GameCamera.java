@@ -25,8 +25,9 @@ public class GameCamera {
 
 	public void cameraUpdate(float posX, float posY) {
 		camera.position.x = posX;
-		if(256 - posY > 250f )
-			camera.position.y = posY + 2f;
+		camera.position.y = posY;
+		//if(256 - posY > 250f )
+			//camera.position.y = posY + 2f;
 		camera.update();
 	}
 
