@@ -56,7 +56,7 @@ public class PlayScreen implements Screen {
 
 		camera = new GameCamera();
 		hud = new Hud(game.batch);
-		map = new MapController("map/Level_1_newground.tmx");
+		map = new MapController("map/Level_1_longer.tmx");
 		worldContactListener = new WorldContactListener();
 
 		world = new World(new Vector2(0, -13), true);
