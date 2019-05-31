@@ -18,6 +18,8 @@ public class Hedgehog extends Enemy {
 
         frames = new Array<TextureRegion>();
 
+        
+        setPosition(x, y);
         for(int i = 0 ; i < 2; i++)
             frames.add(new TextureRegion(getTexture(), i * 36, 2, 32, 32));
 

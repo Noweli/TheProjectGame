@@ -17,6 +17,7 @@ public class Cat extends Enemy {
 
         setRegion(screen.getEnemyAtlas().findRegion("kitku"));
 
+        setPosition(x, y);
         frames = new Array<TextureRegion>();
 
         for(int i = 0 ; i <= 34; i+=34)
@@ -25,7 +26,7 @@ public class Cat extends Enemy {
         walkAnimation = new Animation(0.4f, frames);
         stateTime = 0;
 
-        defineEnemy(8, 8, 0.5f, 336, 214.34f);
+        defineEnemy(8, 8, 0.5f, x, y);
 
         setBounds(getX(), getY(), 32 / TheProjectGame.PIXELSCALE / 2, 32 / TheProjectGame.PIXELSCALE / 2);
     }

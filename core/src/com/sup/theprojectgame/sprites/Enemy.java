@@ -12,27 +12,40 @@ public abstract class Enemy extends Sprite {
     protected PlayScreen screen;
 
     public Body b2body;
-
+    
+    public float x;
+    public float y;
+    
     public Enemy(PlayScreen screen, float x, float y){
         this.world = screen.getWorld();
         this.screen = screen;
         setPosition(x, y);
+        this.x = x;
+        this.y = y;
     }
     public abstract void update(float dt);
     
     public void moveEnemy(float speedX){
+    	
+    	Integer distance = 7;
+    	
         float playerPosX = 0;
         if(getPlayerBody() != null)
             playerPosX = getPlayerBody().getPosition().x;
-        if(playerPosX !=0 ) {
-            if(playerPosX > b2body.getPosition().x)
-                b2body.applyLinearImpulse(new Vector2(speedX,0), b2body.getWorldCenter(), true);
-            else if(playerPosX < b2body.getPosition().x) {
-                b2body.applyLinearImpulse(new Vector2(-speedX, 0), b2body.getWorldCenter(), true);
+        
+        if(((getPlayerBody().getPosition().x - b2body.getPosition().x < distance) && (getPlayerBody().getPosition().y - b2body.getPosition().y < distance))) {
+        	if(playerPosX !=0 ) {
+                if(playerPosX > b2body.getPosition().x)
+                    b2body.applyLinearImpulse(new Vector2(speedX,0), b2body.getWorldCenter(), true);
+                else if(playerPosX < b2body.getPosition().x) {
+                    b2body.applyLinearImpulse(new Vector2(-speedX, 0), b2body.getWorldCenter(), true);
+                }
             }
         }
-        Integer distance = 1;
-
+        
+        
+        
+        distance = 1;
         if(!(getPlayerBody().getPosition().x - b2body.getPosition().x < distance && getPlayerBody().getPosition().y - b2body.getPosition().y < distance)) {
         	if(b2body.getLinearVelocity().x < 0.08f && b2body.getLinearVelocity().y == 0 && getPlayerBody().getLinearVelocity().y < 0.1f)
                 b2body.applyLinearImpulse(new Vector2(0, 6.1f), b2body.getWorldCenter(), true);
@@ -51,7 +64,7 @@ public abstract class Enemy extends Sprite {
 
     protected void defineEnemy(float boxX, float boxY, float restitution, float bdefPosX, float bdefPosY){
         BodyDef bdef = new BodyDef();
-        bdef.position.set(bdefPosX / TheProjectGame.PIXELSCALE, bdefPosY / TheProjectGame.PIXELSCALE);
+        bdef.position.set(bdefPosX, bdefPosY);
         bdef.type = BodyDef.BodyType.DynamicBody;
 
         b2body = world.createBody(bdef);

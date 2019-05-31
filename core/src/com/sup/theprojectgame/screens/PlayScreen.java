@@ -105,9 +105,6 @@ public class PlayScreen implements Screen {
 		
 		for(Enemy enemy : getEnemy()) {
             enemy.update(dt);
-            if(enemy.getX() < player.getX() + 224 / TheProjectGame.PIXELSCALE) {
-                enemy.b2body.setActive(true);
-            }
         }
 		
 		
@@ -143,8 +140,9 @@ public class PlayScreen implements Screen {
 		game.batch.begin();
 		player.draw(game.batch);
 		
-		for (Enemy enemy : getEnemy())
-            enemy.draw(game.batch);
+		for(Enemy e : getEnemy()) {
+			e.draw(game.batch);
+		}
 		
 		
 		game.batch.end();
