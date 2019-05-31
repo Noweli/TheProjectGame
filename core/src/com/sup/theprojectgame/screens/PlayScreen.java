@@ -3,6 +3,16 @@
 
 package com.sup.theprojectgame.screens;
 
+import java.io.BufferedWriter;
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.io.FileWriter;
+import java.io.IOException;
+import java.io.PrintWriter;
+import java.util.ArrayList;
+import java.util.Random;
+import java.util.Scanner;
+
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Input;
 import com.badlogic.gdx.Screen;
@@ -22,6 +32,7 @@ import com.sup.theprojectgame.map.MapController;
 import com.sup.theprojectgame.map.WorldCreator;
 import com.sup.theprojectgame.scenes.Hud;
 import com.sup.theprojectgame.sprites.Cat;
+import com.sup.theprojectgame.sprites.Enemy;
 import com.sup.theprojectgame.sprites.Hedgehog;
 import com.sup.theprojectgame.sprites.Player;
 
@@ -41,8 +52,10 @@ public class PlayScreen implements Screen {
 
 	//Interactive sprites
 	private Player player;
-	private Hedgehog hedgehog;
-	private Cat cat;
+	
+	private Array<Cat> cat;
+	private Array<Hedgehog> hedgehog;
+	
 	
 	//Texture packs
 	private TextureAtlas atlas;
@@ -69,8 +82,8 @@ public class PlayScreen implements Screen {
 		enemyAtlas = new TextureAtlas("sprites/enemies.atlas");
 		
 		player = new Player(this);
-		hedgehog = new Hedgehog(this, player.b2body.getPosition().x, player.b2body.getPosition().y);
-		cat = new Cat(this, player.b2body.getPosition().x +10f, player.b2body.getPosition().y);
+		
+		spawnMonster();
 
 		new WorldCreator(this);
 	}
@@ -89,13 +102,29 @@ public class PlayScreen implements Screen {
 
 		world.step(1 / 60f, 6, 2);
 		camera.cameraUpdate(player.b2body.getPosition().x, player.b2body.getPosition().y);
-		hedgehog.update(dt);
-		cat.update(dt);
+		
+		for(Enemy enemy : getEnemy()) {
+            enemy.update(dt);
+            if(enemy.getX() < player.getX() + 224 / TheProjectGame.PIXELSCALE) {
+                enemy.b2body.setActive(true);
+            }
+        }
+		
+		
 		map.setRenderView(camera.getCamera());
 
 		if(Gdx.input.isKeyJustPressed(Input.Keys.ESCAPE)) {
 			TheProjectGame.changeMusic("music/sombadi.mp3");
 			game.setScreen(new MenuScreen(game));
+		}
+		if(Gdx.input.isKeyJustPressed(Input.Keys.K)) {
+			
+			try {
+				setPointsSpawn(player.b2body.getPosition().x, player.b2body.getPosition().y);
+			} catch (IOException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
 		}
 	}
 
@@ -113,8 +142,11 @@ public class PlayScreen implements Screen {
 		game.batch.setProjectionMatrix(camera.getCamera().combined);
 		game.batch.begin();
 		player.draw(game.batch);
-		hedgehog.draw(game.batch);
-		cat.draw(game.batch);
+		
+		for (Enemy enemy : getEnemy())
+            enemy.draw(game.batch);
+		
+		
 		game.batch.end();
 
 		game.batch.setProjectionMatrix(hud.stage.getCamera().combined);
@@ -168,5 +200,77 @@ public class PlayScreen implements Screen {
 
 	public MapController getMap() {
 		return map;
+	}
+	public void setPointsSpawn(Float x, Float y) throws IOException{
+		
+		String name = "cords.txt";
+		File file = new File(name);
+		file.createNewFile();
+		
+		PrintWriter out = null;
+		try {
+		    out = new PrintWriter(new BufferedWriter(new FileWriter(name, true)));
+		    out.println(x + "," + y);
+		}catch (IOException e) {
+		    System.err.println(e);
+		}finally{
+		    if(out != null){
+		        out.close();
+		    }
+		} 
+	}
+	
+	public ArrayList<String> getPointsSpawn(){
+		
+		ArrayList<String> list = new ArrayList<>();
+		
+		try(Scanner cs = new Scanner(new File("cords.txt"))){
+			while(cs.hasNextLine()){
+				list.add(cs.nextLine());
+			}
+		}catch(FileNotFoundException e){
+			e.printStackTrace();
+		}
+		return list;
+	}
+	public void spawnMonster(){
+		
+		Random random = new Random();
+		
+		ArrayList<String> cords = getPointsSpawn();
+		
+		cat = new Array<Cat>();
+		hedgehog = new Array<Hedgehog>();
+		
+		
+		for (String string : cords) {
+			
+			String[] parts = string.split(",");
+			
+			Float x = Float.parseFloat(parts[0]);
+			Float y = Float.parseFloat(parts[1]);
+
+			if(random.nextInt(2) == 0) {
+				
+				cat.add(new Cat(this, x, y));
+				
+			}else {
+				
+				hedgehog.add(new Hedgehog(this, x, y));
+				
+			}	
+			
+		}
+		
+	}
+	
+	public Array<Enemy> getEnemy(){
+		
+		Array<Enemy> enemies = new Array<Enemy>();
+        enemies.addAll(cat);
+        enemies.addAll(hedgehog);
+		return enemies;
+		
+		
 	}
 }

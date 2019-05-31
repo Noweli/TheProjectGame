@@ -1,7 +1,7 @@
 package com.sup.theprojectgame.sprites;
 
 import com.badlogic.gdx.graphics.g2d.Animation;
-import com.badlogic.gdx.graphics.g2d.TextureRegion;;
+import com.badlogic.gdx.graphics.g2d.TextureRegion;
 import com.badlogic.gdx.utils.Array;
 import com.sup.theprojectgame.TheProjectGame;
 import com.sup.theprojectgame.screens.PlayScreen;

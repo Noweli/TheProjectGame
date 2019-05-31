@@ -18,6 +18,8 @@ public abstract class Enemy extends Sprite {
         this.screen = screen;
     }
 
+    public abstract void update(float dt);
+    
     public void moveEnemy(float speedX){
         float playerPosX = 0;
         if(getPlayerBody() != null)
