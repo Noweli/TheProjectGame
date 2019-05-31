@@ -56,6 +56,8 @@ public class PlayScreen implements Screen {
 	private Array<Cat> cat;
 	private Array<Hedgehog> hedgehog;
 	
+	private Hedgehog test;
+	
 	
 	//Texture packs
 	private TextureAtlas atlas;
@@ -83,6 +85,9 @@ public class PlayScreen implements Screen {
 		
 		player = new Player(this);
 		
+		test = new Hedgehog(this, player.b2body.getPosition().x * TheProjectGame.PIXELSCALE + 2, player.b2body.getPosition().y * TheProjectGame.PIXELSCALE + 100);
+		
+		
 		spawnMonster();
 
 		new WorldCreator(this);
@@ -99,6 +104,8 @@ public class PlayScreen implements Screen {
 
 	public void update(float dt) {
 		handleInput(dt);
+		
+		test.update(dt);
 
 		world.step(1 / 60f, 6, 2);
 		camera.cameraUpdate(player.b2body.getPosition().x, player.b2body.getPosition().y);
@@ -139,6 +146,7 @@ public class PlayScreen implements Screen {
 		game.batch.setProjectionMatrix(camera.getCamera().combined);
 		game.batch.begin();
 		player.draw(game.batch);
+		test.draw(game.batch);
 		
 		for(Enemy e : getEnemy()) {
 			e.draw(game.batch);
@@ -220,12 +228,14 @@ public class PlayScreen implements Screen {
 	
 	public ArrayList<String> getPointsSpawn(){
 		
-		ArrayList<String> list = new ArrayList<>();
+		ArrayList<String> list = new ArrayList<String>();
 		
-		try(Scanner cs = new Scanner(new File("cords.txt"))){
+		try{
+			Scanner cs = new Scanner(new File("cords.txt"));
 			while(cs.hasNextLine()){
 				list.add(cs.nextLine());
 			}
+			cs.close();
 		}catch(FileNotFoundException e){
 			e.printStackTrace();
 		}

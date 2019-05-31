@@ -26,7 +26,7 @@ public class Hedgehog extends Enemy {
         walkAnimation = new Animation(0.4f, frames);
         stateTime = 0;
 
-        defineEnemy(8,8,0.5f,336,214.34f);
+        defineEnemy(8,8,0.5f,x,y);
 
         setBounds(getX(), getY(), 32 / TheProjectGame.PIXELSCALE / 2, 32 / TheProjectGame.PIXELSCALE / 2);
     }

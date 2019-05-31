@@ -59,7 +59,7 @@ public class Player extends Sprite {
 
 	public void definePlayer() {
 		BodyDef bdef = new BodyDef();
-		bdef.position.set(336 / TheProjectGame.PIXELSCALE, 214.34f / TheProjectGame.PIXELSCALE);
+		bdef.position.set(6.72f, 4.2872f);
 		bdef.type = BodyDef.BodyType.DynamicBody;
 
 		b2body = world.createBody(bdef);
