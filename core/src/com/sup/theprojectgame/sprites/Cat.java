@@ -38,4 +38,5 @@ public class Cat extends Enemy {
             flip(true, false);
         moveEnemy(0.05f);
     }
+
 }

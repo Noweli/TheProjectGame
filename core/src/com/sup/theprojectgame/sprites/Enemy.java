@@ -16,8 +16,8 @@ public abstract class Enemy extends Sprite {
     public Enemy(PlayScreen screen, float x, float y){
         this.world = screen.getWorld();
         this.screen = screen;
+        setPosition(x, y);
     }
-
     public abstract void update(float dt);
     
     public void moveEnemy(float speedX){
@@ -31,9 +31,14 @@ public abstract class Enemy extends Sprite {
                 b2body.applyLinearImpulse(new Vector2(-speedX, 0), b2body.getWorldCenter(), true);
             }
         }
+        Integer distance = 1;
 
-        if(b2body.getLinearVelocity().x < 0.08f && b2body.getLinearVelocity().y == 0 && getPlayerBody().getLinearVelocity().y < 0.1f)
-            b2body.applyLinearImpulse(new Vector2(0, 6.1f), b2body.getWorldCenter(), true);
+        if(!(getPlayerBody().getPosition().x - b2body.getPosition().x < distance && getPlayerBody().getPosition().y - b2body.getPosition().y < distance)) {
+        	if(b2body.getLinearVelocity().x < 0.08f && b2body.getLinearVelocity().y == 0 && getPlayerBody().getLinearVelocity().y < 0.1f)
+                b2body.applyLinearImpulse(new Vector2(0, 6.1f), b2body.getWorldCenter(), true);
+        }
+        
+        
     }
 
     private Body getPlayerBody(){
