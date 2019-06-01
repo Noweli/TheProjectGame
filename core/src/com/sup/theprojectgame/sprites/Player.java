@@ -13,6 +13,7 @@ import com.badlogic.gdx.physics.box2d.*;
 import com.badlogic.gdx.utils.Array;
 import com.sup.theprojectgame.TheProjectGame;
 import com.sup.theprojectgame.collision.SpriteCollisionBits;
+import com.sup.theprojectgame.scenes.Hud;
 import com.sup.theprojectgame.screens.PlayScreen;
 
 public class Player extends Sprite {
@@ -138,5 +139,9 @@ public class Player extends Sprite {
 			return State.RUNNING;
 		else
 			return State.STANDING;
+	}
+
+	public void hit() {
+		Hud.loseHealth();
 	}
 }
