@@ -22,9 +22,9 @@ public class WorldContactListener implements ContactListener {
         switch (cDef) {
             case SpriteCollisionBits.PLAYER_BIT | SpriteCollisionBits.ENEMY_BIT:
                 if(fixA.getFilterData().categoryBits == SpriteCollisionBits.PLAYER_BIT)
-                    ((Player) fixA.getUserData()).hit();
+                    Player.hit();
                 else
-                    ((Player) fixB.getUserData()).hit();
+                    Player.hit();
                 break;
         }
     }

@@ -60,7 +60,8 @@ public class Hud {
     }
 
     public static void loseHealth() {
-        healthPoints--;
+        if(healthPoints > 0)
+            healthPoints--;
         healthPointsLabel.setText(String.format("%01d", healthPoints));
     }
 }

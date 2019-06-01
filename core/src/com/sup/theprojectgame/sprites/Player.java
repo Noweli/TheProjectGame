@@ -141,7 +141,7 @@ public class Player extends Sprite {
 			return State.STANDING;
 	}
 
-	public void hit() {
+	public static void hit() {
 		Hud.loseHealth();
 	}
 }
