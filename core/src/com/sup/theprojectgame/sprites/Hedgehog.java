@@ -9,7 +9,7 @@ import com.sup.theprojectgame.screens.PlayScreen;
 public class Hedgehog extends Enemy {
 
     private float stateTime;
-    private Animation walkAnimation;
+    private Animation<TextureRegion> walkAnimation;
     private Array<TextureRegion> frames;
 
     public Hedgehog(PlayScreen screen, float x, float y) {
@@ -23,7 +23,7 @@ public class Hedgehog extends Enemy {
         for(int i = 0 ; i < 2; i++)
             frames.add(new TextureRegion(getTexture(), i * 36, 2, 32, 32));
 
-        walkAnimation = new Animation(0.4f, frames);
+        walkAnimation = new Animation<TextureRegion>(0.4f, frames);
         stateTime = 0;
 
         defineEnemy(8,8,0.5f,x,y);

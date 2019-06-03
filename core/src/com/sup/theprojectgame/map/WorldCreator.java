@@ -8,7 +8,6 @@ import com.badlogic.gdx.maps.objects.RectangleMapObject;
 import com.badlogic.gdx.maps.tiled.TiledMap;
 import com.badlogic.gdx.math.Rectangle;
 
-import com.badlogic.gdx.physics.box2d.World;
 import com.sup.theprojectgame.screens.PlayScreen;
 import com.sup.theprojectgame.sprites.Ground;
 import com.sup.theprojectgame.sprites.Wall;
@@ -16,7 +15,6 @@ import com.sup.theprojectgame.sprites.Wall;
 public class WorldCreator {
 
 	public WorldCreator(PlayScreen screen) {
-		World world = screen.getWorld();
 		TiledMap map = screen.getMap().getMap();
 
 		// Box2D for ground object

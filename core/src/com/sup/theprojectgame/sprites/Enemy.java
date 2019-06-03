@@ -27,7 +27,7 @@ public abstract class Enemy extends Sprite {
     
     public void moveEnemy(float speedX){
     	
-    	Integer distance = 7;
+    	Integer distance = 3;
     	
         float playerPosX = 0;
         if(getPlayerBody() != null)
@@ -74,7 +74,8 @@ public abstract class Enemy extends Sprite {
         rec.setAsBox(boxX / TheProjectGame.PIXELSCALE, boxY / TheProjectGame.PIXELSCALE);
 
         fdef.filter.categoryBits = SpriteCollisionBits.ENEMY_BIT;
-        fdef.filter.maskBits = SpriteCollisionBits.GROUND_BIT | SpriteCollisionBits.WALL_BIT | SpriteCollisionBits.PLAYER_BIT;
+        fdef.filter.maskBits = SpriteCollisionBits.GROUND_BIT | SpriteCollisionBits.WALL_BIT 
+        		| SpriteCollisionBits.PLAYER_BIT | SpriteCollisionBits.ENEMY_BIT;
 
         fdef.shape = rec;
         fdef.restitution = restitution;

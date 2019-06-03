@@ -16,11 +16,9 @@ import java.util.Scanner;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Input;
 import com.badlogic.gdx.Screen;
-import com.badlogic.gdx.audio.Music;
 import com.badlogic.gdx.graphics.GL20;
 import com.badlogic.gdx.graphics.g2d.TextureAtlas;
 import com.badlogic.gdx.math.Vector2;
-import com.badlogic.gdx.physics.box2d.Body;
 import com.badlogic.gdx.physics.box2d.Box2DDebugRenderer;
 import com.badlogic.gdx.physics.box2d.Fixture;
 import com.badlogic.gdx.physics.box2d.World;
@@ -34,7 +32,9 @@ import com.sup.theprojectgame.scenes.Hud;
 import com.sup.theprojectgame.sprites.Cat;
 import com.sup.theprojectgame.sprites.Enemy;
 import com.sup.theprojectgame.sprites.Hedgehog;
+import com.sup.theprojectgame.sprites.PacWoman;
 import com.sup.theprojectgame.sprites.Player;
+import com.sup.theprojectgame.sprites.Snake;
 
 public class PlayScreen implements Screen {
 	private TheProjectGame game;
@@ -53,15 +53,13 @@ public class PlayScreen implements Screen {
 	//Interactive sprites
 	private Player player;
 	
-	private Array<Cat> cat;
-	private Array<Hedgehog> hedgehog;
-	
-	private Hedgehog test;
+	private Array<Enemy> enemies;
 	
 	
 	//Texture packs
 	private TextureAtlas atlas;
 	private TextureAtlas enemyAtlas;
+	private TextureAtlas enemyAtlas2;
 
 	//Fixture array
 	Array<Fixture> fixtures = new Array<Fixture>();
@@ -82,11 +80,10 @@ public class PlayScreen implements Screen {
 		
 		atlas = new TextureAtlas("sprites/player.atlas");
 		enemyAtlas = new TextureAtlas("sprites/enemies.atlas");
+		enemyAtlas2 = new TextureAtlas("sprites/enemy2.atlas");
 		
 		player = new Player(this);
-		
-		test = new Hedgehog(this, player.b2body.getPosition().x * TheProjectGame.PIXELSCALE + 2, player.b2body.getPosition().y * TheProjectGame.PIXELSCALE + 100);
-		
+		enemies = new Array<Enemy>();
 		
 		spawnMonster();
 
@@ -104,13 +101,11 @@ public class PlayScreen implements Screen {
 
 	public void update(float dt) {
 		handleInput(dt);
-		
-		test.update(dt);
 
 		world.step(1 / 60f, 6, 2);
 		camera.cameraUpdate(player.b2body.getPosition().x, player.b2body.getPosition().y);
 		
-		for(Enemy enemy : getEnemy()) {
+		for(Enemy enemy : enemies) {
             enemy.update(dt);
         }
 		
@@ -126,9 +121,15 @@ public class PlayScreen implements Screen {
 			try {
 				setPointsSpawn(player.b2body.getPosition().x, player.b2body.getPosition().y);
 			} catch (IOException e) {
-				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}
+		}
+		
+		if(Hud.getHealthPoints() == 0) {
+			TheProjectGame.changeMusic("music/sombadi.mp3");
+			game.setScreen(new MenuScreen(game));
+			Hud.setHealthPoints(5);
+			Hud.updateHealth();
 		}
 	}
 
@@ -146,9 +147,9 @@ public class PlayScreen implements Screen {
 		game.batch.setProjectionMatrix(camera.getCamera().combined);
 		game.batch.begin();
 		player.draw(game.batch);
-		test.draw(game.batch);
+
 		
-		for(Enemy e : getEnemy()) {
+		for(Enemy e : enemies) {
 			e.draw(game.batch);
 		}
 		
@@ -244,41 +245,39 @@ public class PlayScreen implements Screen {
 	public void spawnMonster(){
 		
 		Random random = new Random();
+		int randomSpawner;
 		
 		ArrayList<String> cords = getPointsSpawn();
-		
-		cat = new Array<Cat>();
-		hedgehog = new Array<Hedgehog>();
-		
-		
+			
 		for (String string : cords) {
 			
 			String[] parts = string.split(",");
 			
 			Float x = Float.parseFloat(parts[0]);
 			Float y = Float.parseFloat(parts[1]);
-
-			if(random.nextInt(2) == 0) {
-				
-				cat.add(new Cat(this, x, y));
-				
-			}else {
-				
-				hedgehog.add(new Hedgehog(this, x, y));
-				
-			}	
 			
+			randomSpawner = random.nextInt(4);
+			
+			if(randomSpawner == 0) {
+				enemies.add(new Cat(this, x, y));
+			}else if(randomSpawner == 1) {
+				enemies.add(new Hedgehog(this, x, y));
+			} else if(randomSpawner == 2) {
+				enemies.add(new Snake(this,x,y));
+			} else if(randomSpawner == 3) {
+				enemies.add(new PacWoman(this, x, y));
+			}
 		}
 		
 	}
 	
 	public Array<Enemy> getEnemy(){
-		
-		Array<Enemy> enemies = new Array<Enemy>();
-        enemies.addAll(cat);
-        enemies.addAll(hedgehog);
 		return enemies;
 		
 		
+	}
+
+	public TextureAtlas getEnemyAtlas2() {
+		return enemyAtlas2;
 	}
 }
