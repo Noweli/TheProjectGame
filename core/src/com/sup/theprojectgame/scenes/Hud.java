@@ -58,10 +58,22 @@ public class Hud {
         score += value;
         scoreLabel.setText(String.format("%06d", score));
     }
+    
+    public static void updateHealth() {
+    	healthPointsLabel.setText(String.format("%01d", healthPoints));
+    }
 
     public static void loseHealth() {
         if(healthPoints > 0)
             healthPoints--;
         healthPointsLabel.setText(String.format("%01d", healthPoints));
     }
+    
+    public static Integer getHealthPoints() {
+		return healthPoints;
+	}
+    
+    public static void setHealthPoints(Integer healthPoints) {
+		Hud.healthPoints = healthPoints;
+	}
 }

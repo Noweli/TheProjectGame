@@ -19,8 +19,8 @@ import com.sup.theprojectgame.screens.PlayScreen;
 public class Player extends Sprite {
 
 	private TextureRegion playerStandin;
-	private Animation playerRun;
-	private Animation playerJump;
+	private Animation<TextureRegion> playerRun;
+	private Animation<TextureRegion> playerJump;
 	private boolean runningRight;
 	private float stateTimer;
 
@@ -45,12 +45,12 @@ public class Player extends Sprite {
 		for(int i = 0; i < 2; i++) {
 			frames.add(new TextureRegion(getTexture(), i * 36, 2, 32, 32));
 		}
-		playerRun = new Animation(0.08f, frames);
+		playerRun = new Animation<TextureRegion>(0.08f, frames);
 		frames.clear();
 
 		frames.add(new TextureRegion(getTexture(), 36, 2, 32, 32));
 
-		playerJump = new Animation(0.06f, frames);
+		playerJump = new Animation<TextureRegion>(0.06f, frames);
 
 		definePlayer();
 
