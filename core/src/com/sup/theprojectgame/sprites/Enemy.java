@@ -83,6 +83,7 @@ public abstract class Enemy extends Sprite {
         fdef.restitution = restitution;
         b2body.createFixture(fdef);
     }
+    
 	public Integer getHp() {
 		return hp;
 	}

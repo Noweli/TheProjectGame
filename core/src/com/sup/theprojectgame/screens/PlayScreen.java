@@ -130,7 +130,7 @@ public class PlayScreen implements Screen {
 			
 			for (Enemy e : enemies) {
 				
-				if(((e.b2body.getPosition().x - player.b2body.getPosition().x) < 1) && ((e.b2body.getPosition().y - player.b2body.getPosition().y)) < 0.1f) {
+				if(((e.b2body.getPosition().x - player.b2body.getPosition().x) < 0.3f) && ((e.b2body.getPosition().y - player.b2body.getPosition().y)) < 0.1f) {
 				
 					e.setHp(e.getHp() - 25);
 					
@@ -141,9 +141,11 @@ public class PlayScreen implements Screen {
 	                    e.b2body.applyLinearImpulse(new Vector2(4, 0), e.b2body.getWorldCenter(), true);
 	                }
 					
+					//Updated ~Noweli
 					if(e.getHp() == 0) {
 						Hud.addScore(100);
-						e.b2body.setActive(false);
+						world.destroyBody(e.b2body);
+						enemies.removeValue(e, true);
 					}
 					
 					
