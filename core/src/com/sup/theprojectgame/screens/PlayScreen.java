@@ -130,15 +130,15 @@ public class PlayScreen implements Screen {
 			
 			for (Enemy e : enemies) {
 				
-				if(((e.b2body.getPosition().x - player.b2body.getPosition().x) < 0.3f) && ((e.b2body.getPosition().y - player.b2body.getPosition().y)) < 0.1f) {
+				if(((e.b2body.getPosition().x - player.b2body.getPosition().x) < 0.3f) && ((e.b2body.getPosition().y - player.b2body.getPosition().y)) < 0.3f) {
 				
 					e.setHp(e.getHp() - 25);
 					
 				
 					if(player.b2body.getPosition().x > e.b2body.getPosition().x)
-	                    e.b2body.applyLinearImpulse(new Vector2(-4,0), e.b2body.getWorldCenter(), true);
+	                    e.b2body.applyLinearImpulse(new Vector2(-2,0), e.b2body.getWorldCenter(), true);
 	                else if(player.b2body.getPosition().x < e.b2body.getPosition().x) {
-	                    e.b2body.applyLinearImpulse(new Vector2(4, 0), e.b2body.getWorldCenter(), true);
+	                    e.b2body.applyLinearImpulse(new Vector2(2, 0), e.b2body.getWorldCenter(), true);
 	                }
 					
 					//Updated ~Noweli
