@@ -16,12 +16,15 @@ public abstract class Enemy extends Sprite {
     public float x;
     public float y;
     
+    public Integer hp;
+    
     public Enemy(PlayScreen screen, float x, float y){
         this.world = screen.getWorld();
         this.screen = screen;
         setPosition(x, y);
         this.x = x;
         this.y = y;
+        hp = 100;
     }
     public abstract void update(float dt);
     
@@ -42,7 +45,6 @@ public abstract class Enemy extends Sprite {
                 }
             }
         }
-        
         
         
         distance = 1;
@@ -81,4 +83,12 @@ public abstract class Enemy extends Sprite {
         fdef.restitution = restitution;
         b2body.createFixture(fdef);
     }
+	public Integer getHp() {
+		return hp;
+	}
+	public void setHp(Integer hp) {
+		this.hp = hp;
+	}
+    
+    
 }

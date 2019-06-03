@@ -125,6 +125,33 @@ public class PlayScreen implements Screen {
 			}
 		}
 		
+		
+		if(Gdx.input.isKeyJustPressed(Input.Keys.SPACE)) {
+			
+			for (Enemy e : enemies) {
+				
+				if(((e.b2body.getPosition().x - player.b2body.getPosition().x) < 1) && ((e.b2body.getPosition().y - player.b2body.getPosition().y)) < 0.1f) {
+				
+					e.setHp(e.getHp() - 25);
+					
+				
+					if(player.b2body.getPosition().x > e.b2body.getPosition().x)
+	                    e.b2body.applyLinearImpulse(new Vector2(-4,0), e.b2body.getWorldCenter(), true);
+	                else if(player.b2body.getPosition().x < e.b2body.getPosition().x) {
+	                    e.b2body.applyLinearImpulse(new Vector2(4, 0), e.b2body.getWorldCenter(), true);
+	                }
+					
+					if(e.getHp() == 0) {
+						Hud.addScore(100);
+						e.b2body.setActive(false);
+					}
+					
+					
+				}
+			}
+			
+		}
+		
 		if(Hud.getHealthPoints() == 0) {
 			TheProjectGame.changeMusic("music/sombadi.mp3");
 			game.setScreen(new MenuScreen(game));
@@ -280,4 +307,6 @@ public class PlayScreen implements Screen {
 	public TextureAtlas getEnemyAtlas2() {
 		return enemyAtlas2;
 	}
+	
+	
 }
