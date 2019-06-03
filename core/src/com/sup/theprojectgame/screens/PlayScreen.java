@@ -130,7 +130,7 @@ public class PlayScreen implements Screen {
 			
 			for (Enemy e : enemies) {
 				
-				if(((e.b2body.getPosition().x - player.b2body.getPosition().x) < 0.3f) && ((e.b2body.getPosition().y - player.b2body.getPosition().y)) < 0.3f) {
+				if((Math.abs((e.b2body.getPosition().x - player.b2body.getPosition().x)) < 0.9f) && (Math.abs((e.b2body.getPosition().y - player.b2body.getPosition().y))) < 0.9f) {
 				
 					e.setHp(e.getHp() - 25);
 					
