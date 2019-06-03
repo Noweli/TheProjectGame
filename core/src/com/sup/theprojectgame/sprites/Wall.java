@@ -6,9 +6,9 @@ import com.sup.theprojectgame.screens.PlayScreen;
 
 public class Wall extends StaticSpriteObject {
 
-    public Wall(PlayScreen screen, Rectangle bounds) {
-        super(screen, bounds);
-        fixture.setUserData(this);
-        setCategoryBit(SpriteCollisionBits.WALL_BIT);
-    }
+	public Wall(PlayScreen screen, Rectangle bounds) {
+		super(screen, bounds);
+		fixture.setUserData(this);
+		setCategoryBit(SpriteCollisionBits.WALL_BIT);
+	}
 }

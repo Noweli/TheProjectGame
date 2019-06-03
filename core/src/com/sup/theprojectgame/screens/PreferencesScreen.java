@@ -17,7 +17,7 @@ import com.badlogic.gdx.scenes.scene2d.utils.ChangeListener;
 import com.badlogic.gdx.utils.viewport.ScreenViewport;
 import com.sup.theprojectgame.TheProjectGame;
 
-public class PreferencesScreen implements Screen{
+public class PreferencesScreen implements Screen {
 
 	private TheProjectGame parent;
 	private Stage stage;
@@ -26,12 +26,11 @@ public class PreferencesScreen implements Screen{
 	private Label volumeSoundLabel;
 	private Texture background;
 
-	
-	public PreferencesScreen(TheProjectGame parent){
+	public PreferencesScreen(TheProjectGame parent) {
 		this.parent = parent;
 		stage = new Stage(new ScreenViewport());
 		background = new Texture("menu/background.png");
-		
+
 	}
 
 	@Override
@@ -61,7 +60,7 @@ public class PreferencesScreen implements Screen{
 		soundMusicSlider.addListener(new EventListener() {
 			@Override
 			public boolean handle(Event event) {
-                TheProjectGame.music.setVolume((volumeMusicSlider.getValue()));
+				TheProjectGame.music.setVolume((volumeMusicSlider.getValue()));
 				return false;
 			}
 		});
@@ -74,41 +73,40 @@ public class PreferencesScreen implements Screen{
 				TheProjectGame.changeMusic("music/sombadi.mp3");
 			}
 		});
-		
-		titleLabel = new Label( "Preferences", skin );
-		volumeMusicLabel = new Label( "Music Volume", skin );
-		volumeSoundLabel = new Label( "Sound Volume", skin );
-		
+
+		titleLabel = new Label("Preferences", skin);
+		volumeMusicLabel = new Label("Music Volume", skin);
+		volumeSoundLabel = new Label("Sound Volume", skin);
+
 		table.add(titleLabel).colspan(2);
-		table.row().pad(10,0,0,10);
+		table.row().pad(10, 0, 0, 10);
 		table.add(volumeMusicLabel).left();
 		table.add(volumeMusicSlider);
-		table.row().pad(10,0,0,10);
-		table.row().pad(10,0,0,10);
+		table.row().pad(10, 0, 0, 10);
+		table.row().pad(10, 0, 0, 10);
 		table.add(volumeSoundLabel).left();
 		table.add(soundMusicSlider);
-		table.row().pad(10,0,0,10);;
-		table.row().pad(10,0,0,10);
+		table.row().pad(10, 0, 0, 10);
+		;
+		table.row().pad(10, 0, 0, 10);
 		table.add(backButton).colspan(2);
 
 	}
 
 	@Override
 	public void render(float delta) {
-		
-		
+
 		Gdx.gl.glClearColor(0f, 0f, 0f, 1);
 		Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT);
-		
-		
+
 		stage.act(Math.min(Gdx.graphics.getDeltaTime(), 1 / 30f));
-		
+
 		stage.getBatch().begin();
 		stage.getBatch().draw(background, 0, 0, TheProjectGame.GAME_WIDTH, TheProjectGame.GAME_HEIGHT);
 		stage.getBatch().end();
-		
+
 		stage.draw();
-		
+
 	}
 
 	@Override
@@ -119,25 +117,25 @@ public class PreferencesScreen implements Screen{
 	@Override
 	public void pause() {
 		// TODO Auto-generated method stub
-		
+
 	}
 
 	@Override
 	public void resume() {
 		// TODO Auto-generated method stub
-		
+
 	}
 
 	@Override
 	public void hide() {
 		// TODO Auto-generated method stub
-		
+
 	}
 
 	@Override
 	public void dispose() {
 		// TODO Auto-generated method stub
-		
+
 	}
 
 }

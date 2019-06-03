@@ -24,7 +24,10 @@ public class Player extends Sprite {
 	private boolean runningRight;
 	private float stateTimer;
 
-	public enum State { RUNNING, STANDING, JUMPING }
+	public enum State {
+		RUNNING, STANDING, JUMPING
+	}
+
 	public State currentState;
 	public State previousState;
 
@@ -42,7 +45,7 @@ public class Player extends Sprite {
 		runningRight = true;
 
 		Array<TextureRegion> frames = new Array<TextureRegion>();
-		for(int i = 0; i < 2; i++) {
+		for (int i = 0; i < 2; i++) {
 			frames.add(new TextureRegion(getTexture(), i * 36, 2, 32, 32));
 		}
 		playerRun = new Animation<TextureRegion>(0.08f, frames);
@@ -67,17 +70,19 @@ public class Player extends Sprite {
 
 		FixtureDef fdef = new FixtureDef();
 		PolygonShape rec = new PolygonShape();
-		
+
 		rec.setAsBox(getWidth() / 2 / TheProjectGame.PIXELSCALE / 2, getHeight() / TheProjectGame.PIXELSCALE / 2);
 
 		fdef.filter.categoryBits = SpriteCollisionBits.PLAYER_BIT;
-		fdef.filter.maskBits = SpriteCollisionBits.ENEMY_BIT | SpriteCollisionBits.GROUND_BIT | SpriteCollisionBits.WALL_BIT;
+		fdef.filter.maskBits = SpriteCollisionBits.ENEMY_BIT | SpriteCollisionBits.GROUND_BIT
+				| SpriteCollisionBits.WALL_BIT;
 
 		fdef.shape = rec;
 		b2body.createFixture(fdef).setUserData("player");
 
 		EdgeShape head = new EdgeShape();
-		head.set(new Vector2(-2 / TheProjectGame.PIXELSCALE, getHeight() / 2 / TheProjectGame.PIXELSCALE), new Vector2(2 / TheProjectGame.PIXELSCALE, getHeight() / 2 / TheProjectGame.PIXELSCALE));
+		head.set(new Vector2(-2 / TheProjectGame.PIXELSCALE, getHeight() / 2 / TheProjectGame.PIXELSCALE),
+				new Vector2(2 / TheProjectGame.PIXELSCALE, getHeight() / 2 / TheProjectGame.PIXELSCALE));
 		fdef.shape = head;
 		fdef.isSensor = true;
 
@@ -91,7 +96,7 @@ public class Player extends Sprite {
 			b2body.applyLinearImpulse(new Vector2(0.1f, 0), b2body.getWorldCenter(), true);
 		if (Gdx.input.isKeyPressed(Input.Keys.LEFT) && b2body.getLinearVelocity().x >= -2.5)
 			b2body.applyLinearImpulse(new Vector2(-0.1f, 0), b2body.getWorldCenter(), true);
-		
+
 		updateSprite(dt);
 	}
 
@@ -105,23 +110,22 @@ public class Player extends Sprite {
 
 		TextureRegion region;
 		switch (currentState) {
-			case JUMPING:
-				region = (TextureRegion) playerJump.getKeyFrame(stateTimer);
-				break;
-			case RUNNING:
-				region = (TextureRegion) playerRun.getKeyFrame(stateTimer, true);
-				break;
-			case STANDING:
-			default:
-				region = playerStandin;
-				break;
+		case JUMPING:
+			region = (TextureRegion) playerJump.getKeyFrame(stateTimer);
+			break;
+		case RUNNING:
+			region = (TextureRegion) playerRun.getKeyFrame(stateTimer, true);
+			break;
+		case STANDING:
+		default:
+			region = playerStandin;
+			break;
 		}
 
-		if((b2body.getLinearVelocity().x < 0 || !runningRight) && !region.isFlipX()) {
+		if ((b2body.getLinearVelocity().x < 0 || !runningRight) && !region.isFlipX()) {
 			region.flip(true, false);
 			runningRight = false;
-		}
-		else if((b2body.getLinearVelocity().x > 0 || runningRight) && region.isFlipX()) {
+		} else if ((b2body.getLinearVelocity().x > 0 || runningRight) && region.isFlipX()) {
 			region.flip(true, false);
 			runningRight = true;
 		}
@@ -133,9 +137,9 @@ public class Player extends Sprite {
 	}
 
 	public State getState() {
-		if(b2body.getLinearVelocity().y > 0 || (b2body.getLinearVelocity().y < 0 && previousState == State.JUMPING))
+		if (b2body.getLinearVelocity().y > 0 || (b2body.getLinearVelocity().y < 0 && previousState == State.JUMPING))
 			return State.JUMPING;
-		if(b2body.getLinearVelocity().x != 0)
+		if (b2body.getLinearVelocity().x != 0)
 			return State.RUNNING;
 		else
 			return State.STANDING;

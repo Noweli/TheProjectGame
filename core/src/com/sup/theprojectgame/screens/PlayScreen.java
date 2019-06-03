@@ -46,22 +46,20 @@ public class PlayScreen implements Screen {
 	private World world;
 	private Box2DDebugRenderer b2dr;
 
-	//Collision system
+	// Collision system
 	WorldContactListener worldContactListener;
 
-
-	//Interactive sprites
+	// Interactive sprites
 	private Player player;
-	
+
 	private Array<Enemy> enemies;
-	
-	
-	//Texture packs
+
+	// Texture packs
 	private TextureAtlas atlas;
 	private TextureAtlas enemyAtlas;
 	private TextureAtlas enemyAtlas2;
 
-	//Fixture array
+	// Fixture array
 	Array<Fixture> fixtures = new Array<Fixture>();
 
 	public PlayScreen(TheProjectGame game) {
@@ -76,15 +74,14 @@ public class PlayScreen implements Screen {
 		b2dr = new Box2DDebugRenderer();
 
 		world.setContactListener(worldContactListener);
-		
-		
+
 		atlas = new TextureAtlas("sprites/player.atlas");
 		enemyAtlas = new TextureAtlas("sprites/enemies.atlas");
 		enemyAtlas2 = new TextureAtlas("sprites/enemy2.atlas");
-		
+
 		player = new Player(this);
 		enemies = new Array<Enemy>();
-		
+
 		spawnMonster();
 
 		new WorldCreator(this);
@@ -104,57 +101,53 @@ public class PlayScreen implements Screen {
 
 		world.step(1 / 60f, 6, 2);
 		camera.cameraUpdate(player.b2body.getPosition().x, player.b2body.getPosition().y);
-		
-		for(Enemy enemy : enemies) {
-            enemy.update(dt);
-        }
-		
-		
+
+		for (Enemy enemy : enemies) {
+			enemy.update(dt);
+		}
+
 		map.setRenderView(camera.getCamera());
 
-		if(Gdx.input.isKeyJustPressed(Input.Keys.ESCAPE)) {
+		if (Gdx.input.isKeyJustPressed(Input.Keys.ESCAPE)) {
 			TheProjectGame.changeMusic("music/sombadi.mp3");
 			game.setScreen(new MenuScreen(game));
 		}
-		if(Gdx.input.isKeyJustPressed(Input.Keys.K)) {
-			
+		if (Gdx.input.isKeyJustPressed(Input.Keys.K)) {
+
 			try {
 				setPointsSpawn(player.b2body.getPosition().x, player.b2body.getPosition().y);
 			} catch (IOException e) {
 				e.printStackTrace();
 			}
 		}
-		
-		
-		if(Gdx.input.isKeyJustPressed(Input.Keys.SPACE)) {
-			
+
+		if (Gdx.input.isKeyJustPressed(Input.Keys.SPACE)) {
+
 			for (Enemy e : enemies) {
-				
-				if((Math.abs((e.b2body.getPosition().x - player.b2body.getPosition().x)) < 0.9f) && (Math.abs((e.b2body.getPosition().y - player.b2body.getPosition().y))) < 0.9f) {
-				
+
+				if ((Math.abs((e.b2body.getPosition().x - player.b2body.getPosition().x)) < 0.9f)
+						&& (Math.abs((e.b2body.getPosition().y - player.b2body.getPosition().y))) < 0.9f) {
+
 					e.setHp(e.getHp() - 25);
-					
-				
-					if(player.b2body.getPosition().x > e.b2body.getPosition().x)
-	                    e.b2body.applyLinearImpulse(new Vector2(-2,0), e.b2body.getWorldCenter(), true);
-	                else if(player.b2body.getPosition().x < e.b2body.getPosition().x) {
-	                    e.b2body.applyLinearImpulse(new Vector2(2, 0), e.b2body.getWorldCenter(), true);
-	                }
-					
-					//Updated ~Noweli
-					if(e.getHp() == 0) {
+
+					if (player.b2body.getPosition().x > e.b2body.getPosition().x)
+						e.b2body.applyLinearImpulse(new Vector2(-2, 0), e.b2body.getWorldCenter(), true);
+					else if (player.b2body.getPosition().x < e.b2body.getPosition().x) {
+						e.b2body.applyLinearImpulse(new Vector2(2, 0), e.b2body.getWorldCenter(), true);
+					}
+
+					// Updated ~Noweli
+					if (e.getHp() == 0) {
 						Hud.addScore(100);
 						world.destroyBody(e.b2body);
 						enemies.removeValue(e, true);
 					}
-					
-					
 				}
 			}
-			
+
 		}
-		
-		if(Hud.getHealthPoints() == 0) {
+
+		if (Hud.getHealthPoints() == 0) {
 			TheProjectGame.changeMusic("music/sombadi.mp3");
 			game.setScreen(new MenuScreen(game));
 			Hud.setHealthPoints(5);
@@ -172,17 +165,15 @@ public class PlayScreen implements Screen {
 		map.renderMap();
 
 		b2dr.render(world, camera.getCamera().combined);
-		
+
 		game.batch.setProjectionMatrix(camera.getCamera().combined);
 		game.batch.begin();
 		player.draw(game.batch);
 
-		
-		for(Enemy e : enemies) {
+		for (Enemy e : enemies) {
 			e.draw(game.batch);
 		}
-		
-		
+
 		game.batch.end();
 
 		game.batch.setProjectionMatrix(hud.stage.getCamera().combined);
@@ -217,11 +208,11 @@ public class PlayScreen implements Screen {
 		b2dr.dispose();
 	}
 
-	public Array<Fixture> getWorldFixtures(){
+	public Array<Fixture> getWorldFixtures() {
 		world.getFixtures(fixtures);
 		return fixtures;
 	}
-	
+
 	public TextureAtlas getAtlas() {
 		return atlas;
 	}
@@ -237,78 +228,78 @@ public class PlayScreen implements Screen {
 	public MapController getMap() {
 		return map;
 	}
-	public void setPointsSpawn(Float x, Float y) throws IOException{
-		
+
+	public void setPointsSpawn(Float x, Float y) throws IOException {
+
 		String name = "cords.txt";
 		File file = new File(name);
 		file.createNewFile();
-		
+
 		PrintWriter out = null;
 		try {
-		    out = new PrintWriter(new BufferedWriter(new FileWriter(name, true)));
-		    out.println(x + "," + y);
-		}catch (IOException e) {
-		    System.err.println(e);
-		}finally{
-		    if(out != null){
-		        out.close();
-		    }
-		} 
+			out = new PrintWriter(new BufferedWriter(new FileWriter(name, true)));
+			out.println(x + "," + y);
+		} catch (IOException e) {
+			System.err.println(e);
+		} finally {
+			if (out != null) {
+				out.close();
+			}
+		}
 	}
-	
-	public ArrayList<String> getPointsSpawn(){
-		
+
+	public ArrayList<String> getPointsSpawn() {
+
 		ArrayList<String> list = new ArrayList<String>();
-		
-		try{
+
+		try {
 			Scanner cs = new Scanner(new File("cords.txt"));
-			while(cs.hasNextLine()){
+			while (cs.hasNextLine()) {
 				list.add(cs.nextLine());
 			}
 			cs.close();
-		}catch(FileNotFoundException e){
+		} catch (FileNotFoundException e) {
 			e.printStackTrace();
 		}
 		return list;
 	}
-	public void spawnMonster(){
-		
+
+	public void spawnMonster() {
+
 		Random random = new Random();
 		int randomSpawner;
-		
+
 		ArrayList<String> cords = getPointsSpawn();
-			
+
 		for (String string : cords) {
-			
+
 			String[] parts = string.split(",");
-			
+
 			Float x = Float.parseFloat(parts[0]);
 			Float y = Float.parseFloat(parts[1]);
-			
+
 			randomSpawner = random.nextInt(4);
-			
-			if(randomSpawner == 0) {
+
+			if (randomSpawner == 0) {
 				enemies.add(new Cat(this, x, y));
-			}else if(randomSpawner == 1) {
+			} else if (randomSpawner == 1) {
 				enemies.add(new Hedgehog(this, x, y));
-			} else if(randomSpawner == 2) {
-				enemies.add(new Snake(this,x,y));
-			} else if(randomSpawner == 3) {
+			} else if (randomSpawner == 2) {
+				enemies.add(new Snake(this, x, y));
+			} else if (randomSpawner == 3) {
 				enemies.add(new PacWoman(this, x, y));
 			}
 		}
-		
+
 	}
-	
-	public Array<Enemy> getEnemy(){
+
+	public Array<Enemy> getEnemy() {
 		return enemies;
-		
-		
+
 	}
 
 	public TextureAtlas getEnemyAtlas2() {
 		return enemyAtlas2;
 	}
-	
-	
+
 }

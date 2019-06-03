@@ -1,6 +1,5 @@
 package com.sup.theprojectgame.screens;
 
-
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Screen;
 import com.badlogic.gdx.assets.AssetManager;
@@ -16,8 +15,8 @@ import com.badlogic.gdx.scenes.scene2d.utils.ChangeListener;
 import com.badlogic.gdx.utils.viewport.ScreenViewport;
 import com.sup.theprojectgame.TheProjectGame;
 
-public class MenuScreen implements Screen{
-	
+public class MenuScreen implements Screen {
+
 	private TheProjectGame parent;
 	private Stage stage;
 	private Skin skin;
@@ -25,7 +24,7 @@ public class MenuScreen implements Screen{
 
 	public final AssetManager manager = new AssetManager();
 
-	public MenuScreen(TheProjectGame parent){
+	public MenuScreen(TheProjectGame parent) {
 		this.parent = parent;
 
 		stage = new Stage(new ScreenViewport());
@@ -36,7 +35,7 @@ public class MenuScreen implements Screen{
 		background = new Texture("menu/background.png");
 	}
 
-	public void queueAddSkin(){
+	public void queueAddSkin() {
 		SkinLoader.SkinParameter params = new SkinLoader.SkinParameter("skin/glassy-ui.atlas");
 		manager.load("skin/glassy-ui.json", Skin.class, params);
 
@@ -44,48 +43,47 @@ public class MenuScreen implements Screen{
 
 	@Override
 	public void show() {
-		Gdx.input.setInputProcessor(stage); 
-		
+		Gdx.input.setInputProcessor(stage);
+
 		Table table = new Table();
 		table.setFillParent(true);
-        table.setDebug(false);
-        stage.addActor(table);
-        
-        
-        //create buttons
-        TextButton newGame = new TextButton("New Game", skin);
-        TextButton preferences = new TextButton("Preferences", skin);
-        TextButton exit = new TextButton("Exit", skin);
-        
-        //add buttons to table
-        table.add(newGame).fillX().uniformX();
+		table.setDebug(false);
+		stage.addActor(table);
+
+		// create buttons
+		TextButton newGame = new TextButton("New Game", skin);
+		TextButton preferences = new TextButton("Preferences", skin);
+		TextButton exit = new TextButton("Exit", skin);
+
+		// add buttons to table
+		table.add(newGame).fillX().uniformX();
 		table.row().pad(10, 0, 10, 0);
 		table.add(preferences).fillX().uniformX();
 		table.row();
 		table.add(exit).fillX().uniformX();
-		
+
 		// create button listeners
 		exit.addListener(new ChangeListener() {
 			@Override
 			public void changed(ChangeEvent event, Actor actor) {
-				Gdx.app.exit();				
+				Gdx.app.exit();
 			}
 		});
-		
+
 		newGame.addListener(new ChangeListener() {
 			@Override
 			public void changed(ChangeEvent event, Actor actor) {
-				parent.changeScreen(TheProjectGame.APPLICATION);			
+				parent.changeScreen(TheProjectGame.APPLICATION);
 			}
 		});
-		
+
 		preferences.addListener(new ChangeListener() {
 			@Override
 			public void changed(ChangeEvent event, Actor actor) {
-				parent.changeScreen(TheProjectGame.PREFERENCES);					
+				parent.changeScreen(TheProjectGame.PREFERENCES);
 			}
 		});
-		
+
 	}
 
 	@Override
@@ -93,13 +91,13 @@ public class MenuScreen implements Screen{
 
 		Gdx.gl.glClearColor(0f, 0f, 0f, 1);
 		Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT);
-		
+
 		stage.act(Math.min(Gdx.graphics.getDeltaTime(), 1 / 30f));
-		
+
 		stage.getBatch().begin();
 		stage.getBatch().draw(background, 0, 0, TheProjectGame.GAME_WIDTH, TheProjectGame.GAME_HEIGHT);
 		stage.getBatch().end();
-		
+
 		stage.draw();
 	}
 
@@ -111,19 +109,19 @@ public class MenuScreen implements Screen{
 	@Override
 	public void pause() {
 		// TODO Auto-generated method stub
-		
+
 	}
 
 	@Override
 	public void resume() {
 		// TODO Auto-generated method stub
-		
+
 	}
 
 	@Override
 	public void hide() {
 		// TODO Auto-generated method stub
-		
+
 	}
 
 	@Override

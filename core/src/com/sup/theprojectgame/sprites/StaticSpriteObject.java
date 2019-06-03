@@ -38,7 +38,7 @@ public abstract class StaticSpriteObject {
 		fixture = body.createFixture(fdef);
 	}
 
-	public void setCategoryBit(short bit){
+	public void setCategoryBit(short bit) {
 		Filter filter = new Filter();
 		filter.categoryBits = bit;
 		fixture.setUserData(filter);

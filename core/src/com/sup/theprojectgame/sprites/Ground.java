@@ -6,7 +6,7 @@ import com.badlogic.gdx.math.Rectangle;
 import com.sup.theprojectgame.collision.SpriteCollisionBits;
 import com.sup.theprojectgame.screens.PlayScreen;
 
-public class Ground extends StaticSpriteObject  {
+public class Ground extends StaticSpriteObject {
 
 	public Ground(PlayScreen screen, Rectangle bounds) {
 		super(screen, bounds);
